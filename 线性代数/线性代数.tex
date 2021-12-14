@@ -1,0 +1,633 @@
+\documentclass[12pt,a4paper,UTF8]{book}
+\usepackage{geometry}   %页边距调整
+\geometry{left=2.0cm,right=2.0cm,top=2.5cm,bottom=2.5cm}
+\usepackage[hyperref, UTF8]{ctex}   %中文输入，及生成PDF时自动生成书签
+\hypersetup{colorlinks=true,linkcolor=black}   %取消目录的默认红框显示
+\usepackage{makeidx}
+\usepackage{pgf}   %创建PostScript和pdf格式的图形
+\usepackage{tikz}   %配合pgf宏包创建复杂图表，例如函数图像
+\usetikzlibrary{math}   %tikz宏包中的库，用于在画图时自己创建变量
+\usepackage{extpfeil}   %extpfeil扩展添加了更多用于生成可扩展箭头的宏，例如\xlongequal等
+\usepackage{txfonts}   %数学字符库
+\usepackage{amsmath}   %更好的数学排版环境，里面提供了更多函数，例如\text{}、\operatorname{}等
+\usepackage{latexsym}   %使用不同的符号字体宏包
+\usepackage{longtable}   %可换页表格
+\usepackage{graphicx}   %可导入和调整外部图片
+\usepackage{enumerate}   %自定义编号标签
+
+\begin{document}
+\frontmatter
+\title{线性代数笔记}
+\author{衔瑜\thanks{Email: fish233yeah@163.com}}
+\date{\today}
+\maketitle
+\tableofcontents
+
+
+
+\mainmatter
+\setlength{\parindent}{0pt}
+\chapter{知识点总结}
+
+\section{行列式计算}
+\subsection{行列式性质}
+\begin{enumerate}
+\item 行列式与其转置行列式的值相等
+\item 对换行列式的两行(列)，行列式变号
+\item 行列式的某一行(列)中所有元素都乘上同一数$k$，等于用该数$k$乘上此行列式，即：
+\[\begin{vmatrix}a_{11}&a_{12}&\cdots&a_{1n}\\\vdots&\vdots&\quad&\vdots\\ka_{i1}&ka_{i2}&\cdots&ka_{in}\\\vdots&\vdots&\quad&\vdots\\a_{n1}&a_{n2}&\cdots&a_{nn}\end{vmatrix}=k\begin{vmatrix}a_{11}&a_{12}&\cdots&a_{1n}\\\vdots&\vdots&\quad&\vdots\\a_{i1}&a_{i2}&\cdots&a_{in}\\\vdots&\vdots&\quad&\vdots\\a_{n1}&a_{n2}&\cdots&a_{nn}\end{vmatrix}\]
+\item 若行列式有两行(列)完全相同或成比例，则行列式等于零
+\item 若行列式的某一行均为两数之和，则行列式可以如下拆分：
+\[\begin{vmatrix}a_{11}&a_{12}&\cdots&a_{1n}\\\vdots&\vdots&\quad&\vdots\\a_{i1}+a_{i1}^{\prime}&a_{i2}+a_{i2}^{\prime}&\cdots&a_{in}+a_{in}^{\prime}\\\vdots&\vdots&\quad&\vdots\\a_{n1}&a_{n2}&\cdots&a_{nn}\end{vmatrix}=\begin{vmatrix}a_{11}&a_{12}&\cdots&a_{1n}\\\vdots&\vdots&\quad&\vdots\\a_{i1}&a_{i2}&\cdots&a_{in}\\\vdots&\vdots&\quad&\vdots\\a_{n1}&a_{n2}&\cdots&a_{nn}\end{vmatrix}+\begin{vmatrix}a_{11}&a_{12}&\cdots&a_{1n}\\\vdots&\vdots&\quad&\vdots\\a_{i1}^{\prime}&a_{i2}^{\prime}&\cdots&a_{in}^{\prime}\\\vdots&\vdots&\quad&\vdots\\a_{n1}&a_{n2}&\cdots&a_{nn}\end{vmatrix}\]
+\item 将行列式的某一行(列)的各元素乘上同一个数然后加到另一行(列)对应的元素上，则行列式不变，即：
+\[\begin{vmatrix}a_{11}&a_{12}&\cdots&a_{1n}\\\vdots&\vdots&\quad&\vdots\\a_{i1}&a_{i2}&\cdots&a_{in}\\\vdots&\vdots&\quad&\vdots\\a_{j1}&a_{j2}&\cdots&a_{jn}\\\vdots&\vdots&\quad&\vdots\\a_{n1}&a_{n2}&\cdots&a_{nn}\end{vmatrix}=\begin{vmatrix}a_{11}&a_{12}&\cdots&a_{1n}\\\vdots&\vdots&\quad&\vdots\\a_{i1}&a_{i2}&\cdots&a_{in}\\\vdots&\vdots&\quad&\vdots\\a_{j1}+ka_{i1}&a_{j2}+ka_{i2}&\cdots&a_{jn}+ka_{in}\\\vdots&\vdots&\quad&\vdots\\a_{n1}&a_{n2}&\cdots&a_{nn}\end{vmatrix}\]
+\item 设$n$阶行列式$D_n=\left|a_{ij}\right|_{n\times n}$，将$D_n$上下或左右翻转，依次得到
+\[D_n^{\left(1\right)}=\begin{vmatrix}a_{n1}&\cdots&a_{nn}\\\vdots&\quad&\vdots\\a_{11}&\cdots&a_{1n}\end{vmatrix},\quad D_n^{\left(2\right)}=\begin{vmatrix}a_{1n}&\cdots&a_{11}\\\vdots&\quad&\vdots\\a_{nn}&\cdots&a_{n1}\end{vmatrix}\]
+则我们有
+\[D_n^{\left(1\right)}=D_n^{\left(2\right)}=\left(-1\right)^{\frac{n\left(n-1\right)}{2}}D_n\]
+\end{enumerate}
+
+\subsection{行列式展开}
+\begin{enumerate}
+\item \textbf{余子式}：在$n$阶行列式中，把$\left(i,j\right)$元$a_{ij}$所在的第$i$行和第$j$列划去后留下来的$n-1$阶行列式叫做$\left(i,j\right)$元$a_{ij}$的余子式，记为$M_{ij}$
+\item  \textbf{代数余子式}：记$A_{ij}=\left(-1\right)^{i+j}M_{ij}$为$\left(i,j\right)$元$a_{ij}$的代数余子式
+\item \textbf{行列式按某一行(列)展开}：行列式等于它的任一行(列)的各元素与其对应的代数余子式乘积之和，即：
+\[D=a_{i1}A_{i1}+a_{i2}A_{i2}+\cdots+a_{in}A_{in}\quad\left(i=1,2,\cdots,n\right)\]
+\[D=a_{1j}A_{1j}+a_{2j}A_{2j}+\cdots+a_{nj}A_{nj}\quad\left(j=1,2,\cdots,n\right)\]
+\end{enumerate}
+
+\subsection{范德蒙行列式}
+\begin{enumerate}[]
+\item 以$x_1,x_2,\cdots,x_n$为行元素的$n$阶范德蒙行列式的算式为
+\[D_n=\begin{vmatrix}1&1&\cdots&1\\x_1&x_2&\cdots&x_n\\\vdots&\vdots&\quad&\vdots\\x_1^{n-1}&x_2^{n-1}&\cdots&x_n^{n-1}\end{vmatrix}=\prod\limits_{1\leq j<i\leq n}\left(x_i-x_j\right)\]
+以$x_1,x_2,\cdots,x_n$为列元素的$n$阶范德蒙行列式的算式为
+\[D_n=\begin{vmatrix}1&x_1&x_1^2&\cdots&x_1^{n-1}\\1&x_2&x_2^2&\cdots&x_2^{n-1}\\1&x_3&x_3^2&\cdots&x_3^{n-1}\\\vdots&\vdots&\vdots&\quad&\vdots\\1&x_n&x_n^2&\cdots&x_n^{n-1}\end{vmatrix}=\prod\limits_{1\leq j<i\leq n}\left(x_i-x_j\right)\]
+\end{enumerate}
+
+
+\section{矩阵}
+\subsection{线性方程组}
+\begin{enumerate}
+\item \textbf{线性方程组的矩阵表示}：对于$n$元线性方程组
+\[\left\{\begin{aligned}
+&a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n=b_1\\
+&a_{21}x_1+a_{22}x_2+\cdots+a_{2n}x_n=b_2\\
+&\cdots\cdots\\
+&a_{m1}x_1+a_{m2}x_2+\cdots+a_{mn}x_n=b_m
+\end{aligned}\right.\]
+我们记：
+\[A=\begin{pmatrix}a_{11}&a_{12}&\cdots&a_{1n}\\a_{21}&a_{22}&\cdots&a_{2n}\\\vdots&\vdots&\quad&\vdots\\a_{m1}&a_{m2}&\cdots&a_{mn}\end{pmatrix},\ \vec{x}=\begin{pmatrix}x_1\\x_2\\\vdots\\x_n\end{pmatrix},\ \vec{b}=\begin{pmatrix}b_1\\b_2\\\vdots\\b_m\end{pmatrix},\ B=\begin{pmatrix}a_{11}&a_{12}&\cdots&a_{1n}&b_1\\a_{21}&a_{22}&\cdots&a_{2n}&b_2\\\vdots&\vdots&\quad&\vdots&\vdots\\a_{m1}&a_{m2}&\cdots&a_{mn}&b_m\end{pmatrix}\]
+此时方程组可以表示为$A\vec{x}=\vec{b}$，矩阵$A$称为方程组的系数矩阵，矩阵$B$称为方程组的增广矩阵。线性方程组有解的充要条件为$R\left(A\right)=R\left(B\right)$，而有唯一解的充要条件为$R\left(A\right)=R\left(B\right)=n$
+\item \textbf{一些性质}：
+\begin{enumerate}
+\item 若矩阵$A$为列满秩矩阵，则矩阵方程$AY=O$只有零解
+\item 设矩阵$A_{m\times n}$的秩等于其行数$m$，则对任意$n$维列向量$\vec{b}$，方程组$AX=\vec{b}$均有解
+\item 设$\vec{\eta}_1,\vec{\eta}_2,\cdots,\vec{\eta}_s$是方程$AX=\vec{b}\ \left(\vec{b}\neq O\right)$的$s$个解向量，$k_1,k_2,\cdots,k_s$为$s$个实数，且满足$k_1+k_2+\cdots+k_s=1$，则$\vec{\eta}=k_1\vec{\eta}_1+k_2\vec{\eta}_2+\cdots+k_s\vec{\eta}_s$也是方程$AX=\vec{b}$的解
+\item 设有非齐次线性方程组$AX=\vec{b}\ \left(\vec{b}\neq O,X=\left[x_1,x_2,\cdots,x_n\right]^T\right)$的系数矩阵的秩为$r<n$，则其对应的齐次线性方程组$AX=O$的基础解系的秩为$n-r$；\\
+若假设$AX=O$的一个基础解系为$\vec{a}_1,\vec{a}_2,\cdots,\vec{a}_{n-r}$，而$\vec{c}$为$AX=\vec{b}$的任意一个特解，则我们有非齐次线性方程组$AX=\vec{b}$的解向量中线性无关的最大个数为$n-r+1$个，其中$\vec{c},\vec{c}+\vec{a}_1,\vec{c}+\vec{a}_2,\cdots,\vec{c}+\vec{a}_{n-r}$即为其中一组线性无关的最大组
+\end{enumerate}
+\item \textbf{克拉默法则}：对于含有$n$个未知数且恰好有$n$个方程的线性方程组
+\[\left\{\begin{aligned}
+&a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n=b_1\\
+&a_{21}x_1+a_{22}x_2+\cdots+a_{2n}x_n=b_2\\
+&\cdots\cdots\\
+&a_{n1}x_1+a_{n2}x_2+\cdots+a_{nn}x_n=b_n
+\end{aligned}\right.\]
+若其系数矩阵行列式$\left|A\right|\neq0$，那么方程组有唯一解
+\[x_1=\frac{\left|A_1\right|}{\left|A\right|},x_2=\frac{\left|A_2\right|}{\left|A\right|},\cdots,x_n=\frac{\left|A_n\right|}{\left|A\right|}\]
+其中$A_j\ \left(j=1,2,\cdots,n\right)$为
+\[A_j=\begin{pmatrix}a_{11}&\cdots&a_{1,j-1}&b_1&a_{1,j+1}&\cdots&a_{1n}\\\vdots&\quad&\vdots&\vdots&\vdots&\quad&\vdots\\a_{n1}&\cdots&a_{n,j-1}&b_n&a_{n,j+1}&\cdots&a_{nn}\end{pmatrix}\]
+\end{enumerate}
+
+\subsection{矩阵}
+\begin{enumerate}
+\item \textbf{对角矩阵}：对角矩阵定义为
+\[\Lambda=\operatorname{diag}\left(\lambda_1,\lambda_2,\cdots,\lambda_n\right)=\begin{pmatrix}\lambda_1&0&\cdots&0\\0&\lambda_2&\cdots&0\\\vdots&\vdots&\quad&\vdots\\0&0&\cdots&\lambda_n\end{pmatrix}\]
+此外我们有$\Lambda^{-1}=\operatorname{diag}\left(\frac{1}{\lambda_1},\frac{1}{\lambda_2},\cdots,\frac{1}{\lambda_n}\right)$，$\Lambda^k=\operatorname{diag}\left(\lambda_1^k,\lambda_2^k,\cdots,\lambda_n^k\right)$，以及对于多项式$\varphi\left(x\right)=a_0+a_1x+\cdots+a_mx^m$，那么我们有$\varphi\left(\Lambda\right)=\operatorname{diag}\left(\varphi\left(\lambda_1\right),\varphi\left(\lambda_2\right),\cdots,\varphi\left(\lambda_n\right)\right)$\\
+注意：注意区分对角矩阵和矩阵的迹，写法$\operatorname{tr}\left(A\right)$表示一个任意方阵$A$的迹，$\operatorname{tr}\left(A\right)=a_{11}+a_{22}+\cdots+a_{nn}$，即一个方阵的主对角线元素之和
+\item \textbf{矩阵乘法运算律}：矩阵乘法不满足交换律，但满足结合律和分配率
+\begin{enumerate}
+\item $\left(AB\right)C=A\left(BC\right)$
+\item $\lambda\left(AB\right)=\left(\lambda A\right)B=A\left(\lambda B\right)$，其中$\lambda$为常数
+\item $A\left(B+C\right)=AB+AC,\ \left(B+C\right)A=BA+CA$
+\end{enumerate}
+\item \textbf{矩阵转置运算律}
+\begin{enumerate}
+\item $\left(A^T\right)^T=A$
+\item $\left(A+B\right)^T=A^T+B^T$
+\item $\left(\lambda A\right)^T=\lambda A^T$，其中$\lambda$为常数
+\item $\left(AB\right)^T=B^TA^T$
+\item 矩阵$A=O$的充要条件为$A^TA=O$
+\end{enumerate}
+\item \textbf{逆矩阵运算律}：设$A$、$B$为$n$阶可逆方阵，$\lambda$为常数
+\begin{enumerate}
+\item 若满足$AB=E$或者$BA=E$其中之一，则可称矩阵$A$、$B$可逆，且有$AB=BA=E$
+\item 初等变换法求逆矩阵
+\[\begin{bmatrix}A&\vdots&E\end{bmatrix}\xrightarrow{\text{仅用初等行变换}}\begin{bmatrix}E&\vdots&A^{-1}\end{bmatrix}\quad\text{或}\quad\begin{bmatrix}A\\\cdots\\E\end{bmatrix}\xrightarrow{\text{仅用初等列变换}}\begin{bmatrix}E\\\cdots\\A^{-1}\end{bmatrix}\]
+\item $\left(A^{-1}\right)^{-1}=A$
+\item $\left(\lambda A\right)^{-1}=\frac{1}{\lambda}A^{-1}$，其中$\lambda$为常数
+\item $\left(AB\right)^{-1}=B^{-1}A^{-1}$
+\end{enumerate}
+\item \textbf{行列式运算律}：设$A$、$B$为$n$阶方阵，$\lambda$为常数
+\begin{enumerate}
+\item $\left|A^T\right|=\left|A\right|$
+\item $\left|\lambda A\right|=\lambda^n\left|A\right|$
+\item $\left|AB\right|=\left|A\right|\left|B\right|$
+\end{enumerate}
+\item \textbf{伴随矩阵}
+\begin{enumerate}
+\item 若矩阵$A$可逆，则我们有
+\[AA^*=A^*A=\left|A\right|E\]
+其中
+\[A^*=\begin{pmatrix}A_{11}&A_{21}&\cdots&A_{n1}\\A_{12}&A_{22}&\cdots&A_{n2}\\\vdots&\vdots&\quad&\vdots\\A_{1n}&A_{2n}&\cdots&A_{nn}\end{pmatrix}\]
+称为矩阵$A$的伴随矩阵，其中$A_{ij}$为矩阵$A$的元素$a_{ij}$的代数余子式。此外需要注意的是，矩阵$A$的元素$a_{ij}$的代数余子式对应的是伴随矩阵$A^*$的元素$\left(A^*\right)_{ji}$
+\item 若矩阵$A$可逆，则$A^*$也可逆
+\item $\left(AB\right)^*=B^*A^*$
+\item 设$A$为$n\ (n\geq3)$阶非零实矩阵，其元素分别与其代数余子式相等（即$A^T=A^*$），则$\left|A\right|=1$
+\end{enumerate}
+\item \textbf{分块矩阵}
+\begin{enumerate}
+\item 矩阵乘法分块条件：前一(左)矩阵的列块数等于后一(右)矩阵的行块数，且每个前一(左)矩阵列块所含列数与后一(右)矩阵对应行块所含行数相等
+\item 分块矩阵逆矩阵：\\
+若有
+\[A=\begin{pmatrix}A_1&O&\cdots&O\\O&A_2&\cdots&O\\\vdots&\vdots&\quad&\vdots\\O&O&\cdots&A_r\end{pmatrix},\quad B=\begin{pmatrix}O&\cdots&O&B_1\\O&\cdots&B_2&O\\\vdots&\quad&\vdots&\vdots\\B_r&\cdots&O&O\end{pmatrix}\]
+且子块$A_i$、$B_i$均可逆，则$A$、$B$可逆，且有
+\[A^{-1}=\begin{pmatrix}A_1^{-1}&O&\cdots&O\\O&A_2^{-1}&\cdots&O\\\vdots&\vdots&\quad&\vdots\\O&O&\cdots&A_r^{-1}\end{pmatrix},\quad B^{-1}=\begin{pmatrix}O&\cdots&O&B_r^{-1}\\O&\cdots&B_{r-1}^{-1}&O\\\vdots&\quad&\vdots&\vdots\\B_1^{-1}&\cdots&O&O\end{pmatrix}\]
+\item 分块矩阵行列式：
+\begin{enumerate}
+\item 设$A$和$D$为方阵(大小不一定相同)，则有$\left|\begin{array}{cc}A&B\\0&D\end{array}\right|=\left|A\right|\cdot\left|D\right|$
+\item 设$A$和$D$为方阵(大小不一定相同)，若$A$可逆，则有$\left|\begin{array}{cc}A&B\\C&D\end{array}\right|=\left|A\right|\cdot\left|D-CA^{-1}B\right|$；若$D$可逆，则有$\left|\begin{array}{cc}A&B\\C&D\end{array}\right|=\left|D\right|\cdot\left|A-BD^{-1}C\right|$
+\end{enumerate}
+\end{enumerate}
+\item \textbf{矩阵的初等变换}
+\begin{enumerate}
+\item 我们有三种初等变换，分别对应三种初等矩阵，对一个矩阵$A$实施一次初等行变换等价于在$A$左边左乘一个对应的初等矩阵，对一个矩阵$A$实施一次初等列变换等价于在$A$右边右乘一个对应的初等矩阵：
+\begin{enumerate}
+\item 对换两行(列)：
+\[E\left(i,j\right)=\left(\begin{array}{ccccccccccc}1&\quad&\quad&\quad&\quad&\quad&\quad&\quad&\quad&\quad&\quad\\\quad&\ddots&\quad&\quad&\quad&\quad&\quad&\quad&\quad&\quad&\quad\\\quad&\quad&1&\quad&\quad&\quad&\quad&\quad&\quad&\quad&\quad\\\quad&\quad&\quad&0&\quad&\cdots&\quad&1&\quad&\quad&\quad\\
+\quad&\quad&\quad&\quad&1&\quad&\quad&\quad&\quad&\quad&\quad\\
+\quad&\quad&\quad&\vdots&\quad&\ddots&\quad&\vdots&\quad&\quad&\quad\\
+\quad&\quad&\quad&\quad&\quad&\quad&1&\quad&\quad&\quad&\quad\\
+\quad&\quad&\quad&1&\quad&\cdots&\quad&0&\quad&\quad&\quad\\
+\quad&\quad&\quad&\quad&\quad&\quad&\quad&\quad&1&\quad&\quad\\
+\quad&\quad&\quad&\quad&\quad&\quad&\quad&\quad&\quad&\ddots&\quad\\
+\quad&\quad&\quad&\quad&\quad&\quad&\quad&\quad&\quad&\quad&1\end{array}\right)\begin{array}{c}\quad\\\quad\\\quad\\\leftarrow\text{第}i\text{行}\\\quad\\\quad\\\quad\\\leftarrow\text{第}j\text{行}\\\quad\\\quad\\\quad\end{array}\]
+\item 以数$k\neq0$乘某一行(列)中的所有元：
+\[E\left(i\left(k\right)\right)=\left(\begin{array}{ccccccc}1&\quad&\quad&\quad&\quad&\quad&\quad\\\quad&\ddots&\quad&\quad&\quad&\quad&\quad\\\quad&\quad&1&\quad&\quad&\quad&\quad\\\quad&\quad&\quad&k&\quad&\quad&\quad\\
+\quad&\quad&\quad&\quad&1&\quad&\quad\\
+\quad&\quad&\quad&\quad&\quad&\ddots&\quad\\
+\quad&\quad&\quad&\quad&\quad&\quad&1\end{array}\right)\begin{array}{c}\quad\\\quad\\\quad\\\leftarrow\text{第}i\text{行}\\\quad\\\quad\\\quad\end{array}\]
+\item 以数$k\neq0$乘矩阵$A$的第$j$行然后将它加到第$i$行或以数$k\neq0$乘矩阵$A$的第$i$列然后将它加到第$j$列
+\[E\left(ij\left(k\right)\right)=\left(\begin{array}{ccccccc}1&\quad&\quad&\quad&\quad&\quad&\quad\\\quad&\ddots&\quad&\quad&\quad&\quad&\quad\\\quad&\quad&1&\cdots&k&\quad&\quad\\\quad&\quad&\quad&\ddots&\vdots&\quad&\quad\\
+\quad&\quad&\quad&\quad&1&\quad&\quad\\
+\quad&\quad&\quad&\quad&\quad&\ddots&\quad\\
+\quad&\quad&\quad&\quad&\quad&\quad&1\end{array}\right)\begin{array}{c}\quad\\\quad\\\leftarrow\text{第}i\text{行}\\\quad\\\leftarrow\text{第}j\text{行}\\\quad\\\quad\end{array}\]
+\end{enumerate}
+\item 若一个矩阵$A$经过有限次初等变换可以变为矩阵$B$，就称矩阵$A$和$B$等价，即若存在可逆矩阵$P$、$Q$，使得$B=PAQ$，则称矩阵$A$和$B$等价，记作$A\sim B$，矩阵等价具有三条性质：
+\begin{enumerate}
+\item 反身性：$A\sim A$
+\item 对称性：若$A\sim B$，则有$B\sim A$
+\item 传递性：若$A\sim B$，$B\sim C$，则有$A\sim C$
+\end{enumerate}
+\item 矩阵$A$经初等行变换变为矩阵$B$等价于存在可逆矩阵$P$使得$PA=B$；矩阵$A$经初等列变换变为矩阵$B$等价于存在可逆矩阵$Q$使得$AQ=B$。此外我们有
+\[\begin{bmatrix}A&\vdots&B\end{bmatrix}\xrightarrow{\text{仅用初等行变换}}\begin{bmatrix}E&\vdots&A^{-1}B\end{bmatrix}\]
+\[\begin{bmatrix}C\\\cdots\\D\end{bmatrix}\xrightarrow{\text{仅用初等列变换}}\begin{bmatrix}E\\\cdots\\DC^{-1}\end{bmatrix}\]
+\end{enumerate}
+\item \textbf{矩阵的秩}
+\begin{enumerate}
+\item 若$A\sim B$，则$R\left(A\right)=R\left(B\right)$
+\item 设$A$为$n\ \left(n\geq2\right)$阶方阵，则$R\left(A^*\right)=\left\{\begin{aligned}
+&n,\quad R\left(A\right)=n\\
+&1,\quad R\left(A\right)=n-1\\
+&0,\quad R\left(A\right)<n-1
+\end{aligned}\right.$
+\item 设$A$、$B$均为$m\times n$矩阵，则$R\left(A\pm B\right)\leq R\left(A\right)+R\left(B\right)$
+\item $R\left(AB\right)\leq\min\{R\left(A\right),R\left(B\right)\}$
+\item 设$A$为$m\times n$矩阵，$B$为$n\times s$矩阵，且$AB=O$，则$R\left(A\right)+R\left(B\right)\leq n$
+\item 设$A$为$m\times n$实矩阵，则$R\left(A\right)=R\left(AA^T\right)=R\left(A^TA\right)$
+\item 设$A$和$B$是$n$阶矩阵，则$R\left(A\right)=R\left(AB\right)$的充要条件为方程组$AB\vec{x}=0$与$B\vec{x}=0$同解
+\end{enumerate}
+\item \textbf{其他}
+\begin{enumerate}
+\item $\left(A^T\right)^{-1}=\left(A^{-1}\right)^T$
+\item $\left(A^*\right)^{-1}=\left(A^{-1}\right)^*$
+\item $\left(A^*\right)^T=\left(A^T\right)^*$
+\item 设矩阵$A$可逆，则$A$为对称矩阵当且仅当$A^{-1}$为对称矩阵
+\item 若矩阵$A$满足$A=-A^T$，则称$A$为反对称矩阵
+\end{enumerate}
+\end{enumerate}
+
+
+\section{向量组的线性相关性}
+\subsection{向量组}
+\begin{enumerate}
+\item 如果$\vec{a}_1,\vec{a}_2,\cdots,\vec{a}_m$线性无关，而$\vec{b}$不能由$\vec{a}_1,\vec{a}_2,\cdots,\vec{a}_m$线性表出，则$\vec{a}_1,\vec{a}_2,\cdots,\vec{a}_m,\vec{b}$线性无关
+\item 设$\vec{a}_1,\vec{a}_2,\cdots,\vec{a}_m$线性无关，而$\vec{a}_1,\vec{a}_2,\cdots,\vec{a}_m,\vec{b}$线性相关，则$\vec{b}$可以由$\vec{a}_1,\vec{a}_2,\cdots,\vec{a}_m$线性表出，且表示法唯一
+\item 设$\vec{b}$可以由$\vec{a}_1,\vec{a}_2,\cdots,\vec{a}_m$线性表出，则表示法唯一的充要条件是$\vec{a}_1,\vec{a}_2,\cdots,\vec{a}_m$线性无关
+\item 向量$\vec{b}$能由向量组$A:\vec{a}_1,\vec{a}_2,\cdots,\vec{a}_m$线性表示的充分必要条件是矩阵$A=\left(\vec{a}_1,\vec{a}_2,\cdots,\vec{a}_m\right)$的秩等于矩阵$B=\left(\vec{a}_1,\vec{a}_2,\cdots,\vec{a}_m,\vec{b}\right)$的秩
+\item 设有两个向量组$A:\vec{a}_1,\vec{a}_2,\cdots,\vec{a}_m$及$B:\vec{b}_1,\vec{b}_2,\cdots,\vec{b}_l$，若$B$组中的每个向量都能由向量组$A$线性表示，则称向量组$B$能由向量组$A$线性表示；若向量组$A$与向量组$B$能相互线性表示，则称这两个向量组等价，记为$\text{向量组}A\cong\text{向量组}B$
+\item 设有两个向量组$A:\vec{a}_1,\vec{a}_2,\cdots,\vec{a}_m$及$B:\vec{b}_1,\vec{b}_2,\cdots,\vec{b}_l$，向量组$B$能由向量组$A$线性表示的充分必要条件为矩阵$A=\left(\vec{a}_1,\vec{a}_2,\cdots,\vec{a}_m\right)$的秩等于矩阵$\left(A,B\right)=\left(\vec{a}_1,\vec{a}_2,\cdots,\vec{a}_m,\vec{b}_1,\vec{b}_2,\cdots,\vec{b}_l\right)$的秩，即$R\left(A\right)=R\left(A,B\right)$；向量组$A$与向量组$B$等价的充分必要条件是$R\left(A\right)=R\left(B\right)=R\left(A,B\right)$
+\item 设向量组$B:\vec{b}_1,\vec{b}_2,\cdots,\vec{b}_l$能由向量组$A:\vec{a}_1,\vec{a}_2,\cdots,\vec{a}_m$线性表示，则$R\left(\vec{b}_1,\vec{b}_2,\cdots,\vec{b}_l\right)\leq R\left(\vec{a}_1,\vec{a}_2,\cdots,\vec{a}_m\right)$
+\item 若向量组$A$与向量组$B$的秩相等，且向量组$A$能由向量组$B$线性表出，则向量组$A$与向量组$B$等价
+\item 向量组$A:\vec{a}_1,\vec{a}_2,\cdots,\vec{a}_m$线性相关的充分必要条件为$R\left(A\right)<m$；线性无关的充分必要条件为$R\left(A\right)=m$
+\item 设向量组$A_0:\vec{a}_1,\vec{a}_2,\cdots,\vec{a}_r$是向量组$A$的一个部分组，且满足
+\begin{enumerate}
+\item 向量组$A_0$线性无关
+\item 向量组$A$的任一向量都能由向量组$A_0$线性表示
+\end{enumerate}
+那么向量组$A_0$便是向量组$A$的一个最大无关组
+\item 矩阵的秩等于其行向量组的秩，也等于其列向量组的秩
+\item 设矩阵$A=\left[\vec{a}_1,\vec{a}_2,\cdots,\vec{a}_m\right]$经过有限次初等行变换变为矩阵$A^{\prime}=\left[\vec{\eta}_1,\vec{\eta}_2,\cdots,\vec{\eta}_m\right]$，则矩阵$A$的任意$k$个列向量与$A^{\prime}$中对应的$k$个列向量有相同的线性相关性，即初等行变换不改变列向量之间的线性关系，同理我们有，初等列变换不改变行向量之间的线性关系
+\end{enumerate}
+
+\subsection{向量空间}
+\begin{enumerate}
+\item 设$V$为$n$维向量的集合，如果集合$V$非空，且集合$V$满足
+\begin{enumerate}
+\item 若$\vec{a}\in V,\ \vec{b}\in V$，则$\vec{a}+\vec{b}\in V$
+\item 若$\vec{a}\in V,\ \lambda\in \mathbb{R}$，则$\lambda\vec{a}\in V$
+\end{enumerate}
+则称集合$V$为向量空间
+\item 设有向量空间$V_1$和$V_2$，若$V_1\subseteq V_2$，就称$V_1$为$V_2$的子空间
+\item 给定一个$n$维向量组$\vec{a}_1,\vec{a}_2,\cdots,\vec{a}_m$，向量集合
+\[L\left(\vec{a}_1,\vec{a}_2,\cdots,\vec{a}_m\right)=\left\{x=k_1\vec{a}_1+k_2\vec{a}_2+\cdots+k_m\vec{a}_m|k_1,k_2,\cdots,k_m\in \mathbb{R}\right\}\]
+是一个向量空间，称为由向量组$\vec{a}_1,\vec{a}_2,\cdots,\vec{a}_m$生成的向量空间
+\item 设$\vec{a}_1,\vec{a}_2,\cdots,\vec{a}_r$是向量空间$V$中的$r$个向量，若满足
+\begin{enumerate}
+\item $\vec{a}_1,\vec{a}_2,\cdots,\vec{a}_r$线性无关
+\item $V$中的所有向量都可由$\vec{a}_1,\vec{a}_2,\cdots,\vec{a}_r$线性表示
+\end{enumerate}
+则$\vec{a}_1,\vec{a}_2,\cdots,\vec{a}_r$为向量空间$V$的一个最大无关组，并称$\vec{a}_1,\vec{a}_2,\cdots,\vec{a}_r$为向量空间$V$的一组基，$r$为$V$的维数，记为$\operatorname{dim}V=r$，称$V$为$r$维向量空间
+\item $\text{向量组}A$与$\text{向量组}B$等价$\Longleftrightarrow\ $$\text{向量组}A$与$\text{向量组}B$生成的向量空间相等
+\item 设$\vec{a}_1,\vec{a}_2,\cdots,\vec{a}_n$和$\vec{b}_1,\vec{b}_2,\cdots,\vec{b}_n$是$n$维向量空间$V$的两组基，且有
+\[\left\{\begin{aligned}
+&\vec{b}_1=p_{11}\vec{a}_1+p_{12}\vec{a}_2+\cdots+p_{1n}\vec{a}_n\\
+&\vec{b}_2=p_{21}\vec{a}_1+p_{22}\vec{a}_2+\cdots+p_{2n}\vec{a}_n\\
+&\cdots\cdots\\
+&\vec{b}_n=p_{n1}\vec{a}_1+p_{n2}\vec{a}_2+\cdots+p_{nn}\vec{a}_n
+\end{aligned}\right.\]
+则将其可以表示为矩阵形式
+\[\left[\vec{b}_1,\vec{b}_2,\cdots,\vec{b}_n\right]=\left[\vec{a}_1,\vec{a}_2,\cdots,\vec{a}_n\right]\begin{bmatrix}p_{11}&p_{21}&\cdots&p_{n1}\\p_{12}&p_{22}&\cdots&p_{n2}\\\vdots&\vdots&\quad&\vdots\\p_{1n}&p_{2n}&\cdots&p_{nn}\end{bmatrix}=\left[\vec{a}_1,\vec{a}_2,\cdots,\vec{a}_n\right]P\]
+我们称矩阵$P=\begin{bmatrix}p_{11}&p_{21}&\cdots&p_{n1}\\p_{12}&p_{22}&\cdots&p_{n2}\\\vdots&\vdots&\quad&\vdots\\p_{1n}&p_{2n}&\cdots&p_{nn}\end{bmatrix}$为旧基$\vec{a}_1,\vec{a}_2,\cdots,\vec{a}_n$到新基$\vec{b}_1,\vec{b}_2,\cdots,\vec{b}_n$的过渡矩阵，需要注意的是，过渡矩阵$P$是线性方程组系数矩阵的转置而不是系数矩阵本身。在得到系数矩阵后，若我们有向量$\vec{c}$在这两组基下的坐标分别为
+\[\vec{c}=\left[\vec{a}_1,\vec{a}_2,\cdots,\vec{a}_n\right]\begin{bmatrix}x_1\\x_2\\\vdots\\x_n\end{bmatrix},\ \vec{c}=\left[\vec{b}_1,\vec{b}_2,\cdots,\vec{b}_n\right]\begin{bmatrix}y_1\\y_2\\\vdots\\y_n\end{bmatrix}\]
+则我们有坐标变换公式
+\[\begin{bmatrix}y_1\\y_2\\\vdots\\y_n\end{bmatrix}=P^{-1}\begin{bmatrix}x_1\\x_2\\\vdots\\x_n\end{bmatrix}\ \text{或}\ \begin{bmatrix}x_1\\x_2\\\vdots\\x_n\end{bmatrix}=P\begin{bmatrix}y_1\\y_2\\\vdots\\y_n\end{bmatrix}\]
+\end{enumerate}
+
+
+\section{矩阵的特征值和特征向量}
+\subsection{向量内积与正交性}
+\begin{enumerate}
+\item \textbf{内积}：对于$n$维向量
+\[\vec{x}=\begin{pmatrix}x_1\\x_2\\\vdots\\x_n\end{pmatrix},\ \vec{y}=\begin{pmatrix}y_1\\y_2\\\vdots\\y_n\end{pmatrix}\]
+其内积定义为
+\[\left<\vec{x},\vec{y}\right>=x_1y_1+x_2y_2+\cdots+x_ny_n\]
+内积性质有：
+\begin{enumerate}
+\item 对称性：$\left<\vec{x},\vec{y}\right>=\left<\vec{y},\vec{x}\right>$
+\item 线性性：$\left<k\vec{x},\vec{y}\right>=k\left<\vec{y},\vec{x}\right>$；$\left<\vec{x}+\vec{y},\vec{z}\right>=\left<\vec{x},\vec{z}\right>+\left<\vec{y},\vec{z}\right>$
+\item 非负性：$\left<\vec{x},\vec{x}\right>\geq0$
+\end{enumerate}
+\item \textbf{范数}：令
+\[\left\|\vec{x}\right\|=\sqrt{\left<\vec{x},\vec{x}\right>}=\sqrt{x_1^2+x_2^2+\cdots+x_n^2}\]
+称$\left\|\vec{x}\right\|$为$n$维向量$\vec{x}$的范数，当$\left\|\vec{x}\right\|=1$时称$\vec{x}$为单位向量\\
+范数性质有：
+\begin{enumerate}
+\item 非负性：当$\vec{x}\neq0$时总有$\left\|\vec{x}\right\|>0$
+\item 齐次性：$\left\|k\vec{x}\right\|=k\left\|\vec{x}\right\|$
+\item 三角不等式：$\left\|\vec{x}+\vec{y}\right\|\leq\left\|\vec{x}\right\|+\left\|\vec{y}\right\|$
+\end{enumerate}
+\item \textbf{正交}：对于$n$维向量$\vec{x}$和$\vec{y}$，若满足$\left<\vec{x},\vec{y}\right>=0$，则称向量$\vec{x}$和$\vec{y}$正交。正交向量有如下性质
+\begin{enumerate}
+\item 若$n$维向量$a_1,a_2,\cdots,a_r$是一组两两正交的非零向量，则$a_1,a_2,\cdots,a_r$线性无关
+\item 设$n$维向量$e_1,e_2,\cdots,e_r$是向量空间$V\left(V\in\mathbb{R}^n\right)$的一个基，如果$e_1,e_2,\cdots,e_r$两两正交，且都是单位向量，则称$e_1,e_2,\cdots,e_r$是向量空间$V$的一个标准正交基
+\end{enumerate}
+\item \textbf{施密特标准正交化}：设第一步先$a_1,a_2,\cdots,a_r$是向量空间$V$的一个基，若要找一组与$a_1,a_2,\cdots,a_r$等价的标准正交基$e_1,e_2,\cdots,e_r$，则可以用两步实现\\
+第一步，正交化
+\[\begin{aligned}
+\vec{b}_1&=\vec{a}_1\\
+\vec{b}_2&=\vec{a}_2-\frac{\left[\vec{b}_1,\vec{a}_2\right]}{\left[\vec{b}_1,\vec{b}_1\right]}\vec{b}_1\\
+&\cdots\\
+\vec{b}_r&=\vec{a}_r-\frac{\left[\vec{b}_1,\vec{a}_r\right]}{\left[\vec{b}_1,\vec{b}_1\right]}\vec{b}_1-\frac{\left[\vec{b}_2,\vec{a}_r\right]}{\left[\vec{b}_2,\vec{b}_2\right]}\vec{b}_2-\cdots-\frac{\left[\vec{b}_{r-1},\vec{a}_r\right]}{\left[\vec{b}_{r-1},\vec{b}_{r-1}\right]}\vec{b}_{r-1}
+\end{aligned}\]
+第二步，单位化
+\[\begin{aligned}
+\vec{e}_1&=\frac{\vec{b}_1}{\left\|\vec{b}_1\right\|}\\
+\vec{e}_2&=\frac{\vec{b}_2}{\left\|\vec{b}_2\right\|}\\
+&\cdots\\
+\vec{e}_r&=\frac{\vec{b}_r}{\left\|\vec{b}_r\right\|}\\
+\end{aligned}\]
+\item \textbf{正交矩阵}：若$n$阶矩阵$A$满足$A^TA=E\ \left(\text{即}A^{-1}=A^T\right)$，则称$A$为正交矩阵。此外，由定义我们可以得知以下性质
+\begin{enumerate}
+\item 方阵$A$为正交矩阵的充分必要条件为$A$的列向量都是单位向量，且两两正交
+\item 若方阵$A$为正交矩阵，则$A$必然可逆并有$\left|A\right|=\pm1$，且$A^{-1}$、$A^T$、$A^*$也均为正交矩阵
+\item 若方阵$A$和$B$均为正交矩阵，则$AB$也为正交矩阵
+\item 若方阵$P$为正交矩阵，则线性变换$\vec{y}=P\vec{x}$称为正交变换，正交变换不改变向量的长度(即范数)
+\[\left\|\vec{y}\right\|=\sqrt{\vec{y}^T\vec{y}}=\sqrt{\vec{x}^TP^TP\vec{x}}=\sqrt{\vec{x}^T\vec{x}}=\left\|\vec{x}\right\|\]
+\end{enumerate}
+\end{enumerate}
+
+\subsection{特征值与特征向量}
+\begin{enumerate}
+\item 对于$n$阶方阵$A$，求解特征值问题可以转换为求方程$\left|A-\lambda E\right|=0$的解，该方程称为矩阵$A$的特征方程，而多项式$f\left(\lambda\right)=\left|A-\lambda E\right|$称为矩阵$A$的特征多项式（注意，特征向量必须为非零向量）
+\item 设$n$阶矩阵$A=\left(a_{ij}\right)$的特征值为$\lambda_1,\lambda_2,\cdots,\lambda_n$，则我们有
+\begin{enumerate}
+\item $\lambda_1+\lambda_2+\cdots+\lambda_n=\operatorname{tr}\left(A\right)=a_{11}+a_{22}+\cdots+a_{nn}$
+\item $\lambda_1\lambda_2\cdots\lambda_n=\left|A\right|$
+\end{enumerate}
+\item 设$\lambda_1,\lambda_2,\cdots,\lambda_m$是方阵$A$的$m$个不同的特征值，$\vec{p}_1,\vec{p}_2,\cdots,\vec{p}_m$依次是与之对应的特征向量，则$\vec{p}_1,\vec{p}_2,\cdots,\vec{p}_m$线性无关
+\item 设$\lambda_1$和$\lambda_2$是方程$A$的两个不同特征值，$\vec{\xi}_1,\vec{\xi}_2,\cdots,\vec{\xi}_s$和$\vec{\eta}_1,\vec{\eta}_2,\cdots,\vec{\eta}_t$分别是对应于$\lambda_1$和$\lambda_2$的线性无关的特征向量，则$\vec{\xi}_1,\vec{\xi}_2,\cdots,\vec{\xi}_s,\vec{\eta}_1,\vec{\eta}_2,\cdots,\vec{\eta}_t$线性无关
+\item 若$\lambda$是矩阵$A$的一个特征值，对应的特征向量为$\vec{\alpha}$，设$f\left(x\right)$为一个多项式，$P$为一可逆矩阵，则我们有如下对应表格
+\begin{normalsize}
+\begin{center}
+\begin{longtable}{|c|c|c|}
+\hline
+矩阵&特征值&特征向量\\
+\hline
+$A$&$\lambda$&$\vec{\alpha}$\\
+\hline
+$cA$&$c\lambda$&$\vec{\alpha}$\\
+\hline
+$A^k$&$\lambda^k$&$\vec{\alpha}$\\
+\hline
+$f\left(A\right)$&$f\left(\lambda\right)$&$\vec{\alpha}$\\
+\hline
+$A^{-1}$&$\frac{1}{\lambda}$&$\vec{\alpha}$\\
+\hline
+$A^*$&$\frac{\left|A\right|}{\lambda}$&$\vec{\alpha}$\\
+\hline
+$A^T$&$\lambda$&不一定为$\vec{\alpha}$\\
+\hline
+$B=P^{-1}AP$&$\lambda$&$P^{-1}\vec{\alpha}$\\
+\hline
+\caption{矩阵特征值与特征向量表}
+\label{tab:Margin_settings}
+\end{longtable}
+\end{center}
+\end{normalsize}
+\item 对于一个$n$阶矩阵$A$，若$R\left(A\right)=1$，则$A$有$n-1$个零特征值，最后一个非零特征值等于矩阵的迹$\operatorname{tr}\left(A\right)=a_{11}+a_{22}+\cdots+a_{nn}$
+\item 对于方阵$kE-A$，其可逆的充要条件为$k$不为矩阵$A$的特征值（因为当且仅当$k$为矩阵$A$的特征值时才有$\left|kE-A\right|=0$）
+\end{enumerate}
+
+\subsection{相似矩阵}
+\begin{enumerate}
+\item 设$A$、$B$都是$n$阶矩阵，若有可逆矩阵$P$，使$P^{-1}AP=B$，则称矩阵$A$与$B$相似
+\item 若矩阵$A$与$B$相似，则$A$与$B$的秩相同，特征多项式也相同，从而特征值也相同
+\item 若$n$阶矩阵$A$与$B$有$n$个相同的特征值（不一定互异），且$A$与$B$均与对角矩阵相似，则矩阵$A$与$B$相似
+\item $n$阶矩阵$A$可相似对角化的充要条件是$A$有$n$个线性无关的特征向量
+\item $n$阶矩阵$A$若有$n$个互异的特征值则必然可以对角化
+\item 若矩阵$A$可对角化，且其特征值以及对应的特征向量为$\lambda_1,\lambda_2,\cdots,\lambda_n$和$\vec{a}_1,\vec{a}_2,\cdots,\vec{a}_n$，则我们有
+\[P^{-1}AP=\operatorname{diag}\left(\lambda_1,\lambda_2,\cdots,\lambda_n\right)\]
+其中\[P=\left[\vec{a}_1,\vec{a}_2,\cdots,\vec{a}_n\right]\]
+需要注意的是，上式对角矩阵的对角元的排列顺序应当与$P$中的列向量的排列次序一致
+\item 实对称矩阵一定可相似对角化，且存在正交矩阵$P$满足$P^{-1}AP=P^TAP=\Lambda$
+\item 实对称矩阵$A$的对角化与普通矩阵对角化相比多了一个把特征向量组单位正交化的步骤，即步骤为：
+\begin{enumerate}
+\item 求出特征值和特征向量组$\lambda_1,\lambda_2,\cdots,\lambda_n$和$\vec{a}_1,\vec{a}_2,\cdots,\vec{a}_n$
+\item 将每个一重特征值$\lambda_i$对应的特征向量$\vec{a}_{i}$单位化得到$\vec{\eta}_{i}$
+\item 将每个多重特征值$\lambda_j$的特征向量组$\vec{a}_{j1},\vec{a}_{j2},\cdots,\vec{a}_{js}$用施密特标准正交化方法单位正交化得到单位正交向量组$\vec{\eta}_{j1},\vec{\eta}_{j2},\cdots,\vec{\eta}_{js}$
+\item 把单位正交向量组按照对应特征值顺序排列得到正交变换矩阵$Q=\left[\vec{\eta}_{1},\vec{\eta}_{2},\cdots,\vec{\eta}_{n}\right]$，满足$Q^{-1}AQ=Q^TAQ=\operatorname{diag}\left(\lambda_1,\lambda_2,\cdots,\lambda_n\right)$
+\end{enumerate}
+\item 实对称矩阵的属于不同特征值的特征向量一定正交，属于同一特征值的不同特征向量即使线性无关也不一定正交
+\end{enumerate}
+
+
+\section{二次型}
+\subsection{二次型与标准型}
+\begin{enumerate}
+\item 含有$n$个变量$x_1,x_2,\cdots,x_n$的二次齐次函数
+\[f\left(x_1,x_2,\cdots,x_n\right)=a_{11}x_1^2+a_{22}x_2^2+\cdots+a_{nn}x_n^2+2a_{12}x_1x_2+2a_{13}x_1x_3+\cdots+2a_{n-1,n}x_{n-1}x_n\]
+称为二次型，而只含平方项的二次型称为标准型，即
+\[f\left(x_1,x_2,\cdots,x_n\right)=a_{11}x_1^2+a_{22}x_2^2+\cdots+a_{nn}x_n^2\]
+\item 对于二次型$f$，设
+\[A=\begin{pmatrix}a_{11}&a_{12}&\cdots&a_{1n}\\a_{21}&a_{22}&\cdots&a_{2n}\\\vdots&\vdots&\ &\vdots\\a_{n1}&a_{n2}&\cdots&a_{nn}\end{pmatrix},\ \vec{x}=\begin{pmatrix}x_1\\x_2\\\vdots\\x_n\end{pmatrix}\]
+则二次型可以表示为$f=\vec{x}^TA\vec{x}$，其中$A$为对称矩阵。此时我们称矩阵$A$为二次型$f$的矩阵，矩阵的秩就叫做二次型的秩
+\item 由于二次型的矩阵为实对称矩阵，故对于任意二次型，总存在正交变换$\vec{x}=P\vec{y}$，使二次型$f$化为标准型
+\[f=\lambda_1y_1^2+\lambda_2y_2^2+\cdots+\lambda_ny_n^2\]
+其中$\lambda_1,\lambda_2,\cdots,\lambda_n$是二次型$f$的矩阵$A$的特征值\\
+（注意：并不是线性变换得到一个仅有平方项的二次型就是原二次型的标准型，线性变换必须是可逆变换，即变换矩阵为可逆矩阵）
+\item 设矩阵$A$和$B$是$n$阶矩阵，若有可逆矩阵$C$使得$B=C^TAC$，则称矩阵$A$和$B$合同
+\item 二次型的标准型中正系数的个数称为二次型的正惯性指数，负系数的个数称为负惯性指数，正惯性指数+负惯性指数=矩阵的秩
+\item 矩阵$A$正定的四个相互等价的充要条件：
+\begin{enumerate}
+\item 矩阵$A$对应的二次型$f=\vec{x}^TA\vec{x}$的标准型系数全部为正
+\item 矩阵$A$与单位矩阵$E$合同，即存在可逆矩阵$C$使得$A=C^TC$
+\item 矩阵$A$的特征值全为正
+\item 矩阵$A$的各阶主子式全为正，即
+\[a_{11}>0,\ \begin{vmatrix}a_{11}&a_{12}\\a_{21}&a_{22}\end{vmatrix}>0,\ \cdots,\ \begin{vmatrix}a_{11}&\cdots&a_{1n}\\\vdots&\ &\vdots\\a_{n1}&\cdots&a_{nn}\end{vmatrix}>0\]
+\end{enumerate}
+\item 矩阵$A$负定的四个相互等价的充要条件：
+\begin{enumerate}
+\item 矩阵$A$对应的二次型$f=\vec{x}^TA\vec{x}$的标准型系数全部为负
+\item 矩阵$A$与负单位矩阵$-E$合同，即存在可逆矩阵$C$使得$A=-C^TC$
+\item 矩阵$A$的特征值全为负
+\item 矩阵$A$的奇数阶主子式为负，偶数阶主子式为正
+\end{enumerate}
+\item 正定矩阵有如下性质
+\begin{enumerate}
+\item 正定矩阵必为实对称矩阵
+\item 正定矩阵的逆矩阵也为正定矩阵
+\item 正定矩阵的各顺序主子阵$A_k$也为对称正定矩阵
+\end{enumerate}
+\item 负定矩阵有如下性质
+\begin{enumerate}
+\item 负定矩阵必为实对称矩阵
+\item 负定矩阵的逆矩阵也为负定矩阵
+\item 若$A$为负定矩阵，则$-A$为正定矩阵
+\end{enumerate}
+\item 两个同阶实对称矩阵合同的充要条件是有相同的正负惯性指数
+\item 两个同阶实对称矩阵相似则其必然合同，但其合同不一定相似，而一般情况下的矩阵相似则不一定合同，合同也不一定相似
+\end{enumerate}
+
+
+\section{线性空间和线性变换}
+\subsection{线性空间}
+\begin{enumerate}
+\item 线性空间的定义为一个定义了加法和数量乘法且满足下面八条运算律的非空集合$V$（设$\vec{\alpha}$、$\vec{\beta}$、$\vec{\gamma}\in V$，$\lambda$、$\mu\in\mathbb{R}$）：
+\begin{enumerate}
+\item $\vec{\alpha}+\vec{\beta}=\vec{\beta}+\vec{\alpha}$
+\item $\left(\vec{\alpha}+\vec{\beta}\right)+\vec{\gamma}=\vec{\alpha}+\left(\vec{\beta}+\vec{\gamma}\right)$
+\item 在$V$中存在零元素$0$，对任何$\vec{\alpha}\in V$都有$\vec{\alpha}+0=\vec{\alpha}$
+\item 对任何$\vec{\alpha}\in V$都有$\vec{\alpha}$的负元素$\vec{\beta}\in V$，使得$\vec{\alpha}+\vec{\beta}=0$
+\item $1\vec{\alpha}=\vec{\alpha}$
+\item $\lambda\left(\mu\vec{\alpha}\right)=\left(\lambda\mu\right)\vec{\alpha}$
+\item $\left(\lambda+\mu\right)\vec{\alpha}=\lambda\vec{\alpha}+\mu\vec{\alpha}$
+\item $\lambda\left(\vec{\alpha}+\vec{\beta}\right)=\lambda\vec{\alpha}+\lambda\vec{\beta}$
+\end{enumerate}
+\item 设$V$是一个线性空间，$L$是$V$的一个非空子集，则$L$为线性子空间的充要条件为$L$对$V$中的线性运算（加法、数乘）封闭
+\item 线性空间的零向量唯一，任一向量的负向量唯一
+\item 两线性空间$V_1$、$V_2$相同的三个相互等价的充要条件
+\begin{enumerate}
+\item $V_1\in V_2$且$V_2\in V_1$
+\item $V_1$、$V_2$的基可以互相线性表出
+\item $\operatorname{dim}V_1=\operatorname{dim}V_2$，且有一个空间属于另一个空间
+\end{enumerate}
+\end{enumerate}
+
+\subsection{基、维数、坐标}
+\begin{enumerate}
+\item 在线性空间$V$中，如果存在$n$个向量$\vec{\alpha}_1,\vec{\alpha}_2,\cdots,\vec{\alpha}_n$满足：
+\begin{enumerate}
+\item $\vec{\alpha}_1,\vec{\alpha}_2,\cdots,\vec{\alpha}_n$线性无关
+\item $V$中任一向量$\vec{\alpha}$总可由$\vec{\alpha}_1,\vec{\alpha}_2,\cdots,\vec{\alpha}_n$线性表出
+\end{enumerate}
+则称$\vec{\alpha}_1,\vec{\alpha}_2,\cdots,\vec{\alpha}_n$为线性空间$V$的一组基，$n$称为$V$的维数，记为$\operatorname{dim}V=n$
+\item 设$\vec{\alpha}_1,\vec{\alpha}_2,\cdots,\vec{\alpha}_n$是线性空间$V_n$的一组基，则对任一向量$\vec{\alpha}\in V_n$，总是有且只有一组有序数$x_1,x_2,\cdots,x_n$使得
+\[\vec{\alpha}=x_1\vec{\alpha}_1+x_2\vec{\alpha}_2+\cdots+x_n\vec{\alpha}_n\]
+则这组有序数就称为向量$\vec{\alpha}$在$\vec{\alpha}_1,\vec{\alpha}_2,\cdots,\vec{\alpha}_n$这组基下的坐标，记为
+\[\vec{\alpha}=\left(x_1,x_2,\cdots,x_n\right)^T\]
+\item 因为向量空间是线性空间的特殊形式，所以线性空间的坐标变换方式与上面提到的向量空间的坐标变换基本一致。\\
+设$\vec{\alpha}_1,\vec{\alpha}_2,\cdots,\vec{\alpha}_n$和$\vec{\beta}_1,\vec{\beta}_2,\cdots,\vec{\beta}_n$是$n$维向量空间$V_n$的两组基，且有
+\[\left\{\begin{aligned}
+&\vec{\beta}_1=p_{11}\vec{\alpha}_1+p_{12}\vec{\alpha}_2+\cdots+p_{1n}\vec{\alpha}_n\\
+&\vec{\beta}_2=p_{21}\vec{\alpha}_1+p_{22}\vec{\alpha}_2+\cdots+p_{2n}\vec{\alpha}_n\\
+&\cdots\cdots\\
+&\vec{\beta}_n=p_{n1}\vec{\alpha}_1+p_{n2}\vec{\alpha}_2+\cdots+p_{nn}\vec{\alpha}_n
+\end{aligned}\right.\]
+则将其可以表示为矩阵形式
+\[\left[\vec{\beta}_1,\vec{\beta}_2,\cdots,\vec{\beta}_n\right]=\left[\vec{\alpha}_1,\vec{\alpha}_2,\cdots,\vec{\alpha}_n\right]\begin{bmatrix}p_{11}&p_{21}&\cdots&p_{n1}\\p_{12}&p_{22}&\cdots&p_{n2}\\\vdots&\vdots&\quad&\vdots\\p_{1n}&p_{2n}&\cdots&p_{nn}\end{bmatrix}=\left[\vec{\alpha}_1,\vec{\alpha}_2,\cdots,\vec{\alpha}_n\right]P\]
+我们称矩阵$P=\begin{bmatrix}p_{11}&p_{21}&\cdots&p_{n1}\\p_{12}&p_{22}&\cdots&p_{n2}\\\vdots&\vdots&\quad&\vdots\\p_{1n}&p_{2n}&\cdots&p_{nn}\end{bmatrix}$为旧基$\vec{\alpha}_1,\vec{\alpha}_2,\cdots,\vec{\alpha}_n$到新基$\vec{\beta}_1,\vec{\beta}_2,\cdots,\vec{\beta}_n$的过渡矩阵，需要注意的是，过渡矩阵$P$是线性方程组系数矩阵的转置而不是系数矩阵本身。在得到系数矩阵后，若我们有向量$\vec{c}$在这两组基下的坐标分别为
+\[\vec{c}=\left[\vec{\alpha}_1,\vec{\alpha}_2,\cdots,\vec{\alpha}_n\right]\begin{bmatrix}x_1\\x_2\\\vdots\\x_n\end{bmatrix},\ \vec{c}=\left[\vec{\beta}_1,\vec{\beta}_2,\cdots,\vec{\beta}_n\right]\begin{bmatrix}y_1\\y_2\\\vdots\\y_n\end{bmatrix}\]
+则我们有坐标变换公式
+\[\begin{bmatrix}y_1\\y_2\\\vdots\\y_n\end{bmatrix}=P^{-1}\begin{bmatrix}x_1\\x_2\\\vdots\\x_n\end{bmatrix}\ \text{或}\ \begin{bmatrix}x_1\\x_2\\\vdots\\x_n\end{bmatrix}=P\begin{bmatrix}y_1\\y_2\\\vdots\\y_n\end{bmatrix}\]
+\end{enumerate}
+
+\subsection{线性变换}
+\begin{enumerate}
+\item 设$V_n$和$U_m$分别为$n$维和$m$维线性空间，$T$是一个从$V_n$到$U_m$的映射，若映射$T$满足：
+\begin{enumerate}
+\item 任给$\vec{\alpha}_1$、$\vec{\alpha}_2\in V_n$，有$T\left(\vec{\alpha}_1+\vec{\alpha}_2\right)=T\left(\vec{\alpha}_1\right)+T\left(\vec{\alpha}_2\right)$
+\item 任给$\vec{\alpha}\in V_n$，$\lambda\in\mathbb{R}$，有$T\left(\lambda\vec{\alpha}\right)=\lambda T\left(\vec{\alpha}\right)$
+\end{enumerate}
+那么就称$T$为从$V_n$到$U_m$的线性映射，特别的，若$T$是从$V_n$到它自身的线性映射，则称$T$为线性空间$V_n$中的线性变换
+\item 线性变换有如下性质：
+\begin{enumerate}
+\item $T\left(0\right)=0$，$T\left(-\vec{\alpha}\right)=-T\left(\vec{\alpha}\right)$
+\item 若$\vec{\beta}=k_1\vec{\alpha}_1+k_2\vec{\alpha}_2+\cdots+k_m\vec{\alpha}_m$，则
+\[T\left(\vec{\beta}\right)=k_1T\left(\vec{\alpha}_1\right)+k_2T\left(\vec{\alpha}_2\right)+\cdots+k_mT\left(\vec{\alpha}_m\right)\]
+\item 若$\vec{\alpha}_1,\vec{\alpha}_2,\cdots,\vec{\alpha}_m$线性相关，则$T\left(\vec{\alpha}_1\right),T\left(\vec{\alpha}_2\right),\cdots,T\left(\vec{\alpha}_m\right)$也线性相关
+\item 线性变换$T$的像集$T\left(V_n\right)$时一个线性空间，称为线性变换$T$的像空间
+\item 使$T\left(\vec{\alpha}\right)=0$的$\vec{\alpha}$的全体
+\[N_T=\left\{\vec{\alpha}|\vec{\alpha}\in V_n,T\left(\vec{\alpha}\right)=0\right\}\]
+也是线性空间，$N_T$称为线性变换$T$的核
+\end{enumerate}
+\item 设$T$是线性空间$V_n$中的线性变换，在$V_n$中选定一个基$\vec{\alpha}_1,\vec{\alpha}_2,\cdots,\vec{\alpha}_n$，如果这个基在变换$T$下的像为
+\[\left\{\begin{aligned}
+&T\left(\vec{\alpha}_1\right)=p_{11}\vec{\alpha}_1+p_{12}\vec{\alpha}_2+\cdots+p_{1n}\vec{\alpha}_n\\
+&T\left(\vec{\alpha}_2\right)=p_{21}\vec{\alpha}_1+p_{22}\vec{\alpha}_2+\cdots+p_{2n}\vec{\alpha}_n\\
+&\cdots\cdots\\
+&T\left(\vec{\alpha}_n\right)=p_{n1}\vec{\alpha}_1+p_{n2}\vec{\alpha}_2+\cdots+p_{nn}\vec{\alpha}_n
+\end{aligned}\right.\]
+将上述线性方程组的系数矩阵的转置（注意，跟上面的坐标变换一样，都是转置）记为$A$
+\[A=\begin{bmatrix}p_{11}&p_{21}&\cdots&p_{n1}\\p_{12}&p_{22}&\cdots&p_{n2}\\\vdots&\vdots&\quad&\vdots\\p_{1n}&p_{2n}&\cdots&p_{nn}\end{bmatrix}\]
+则线性变换$T$可以表示为
+\[T\left(\vec{\alpha}_1,\vec{\alpha}_2,\cdots,\vec{\alpha}_n\right)=\left(\vec{\alpha}_1,\vec{\alpha}_2,\cdots,\vec{\alpha}_n\right)A\]
+$A$就称为线性变换$T$在基$\vec{\alpha}_1,\vec{\alpha}_2,\cdots,\vec{\alpha}_n$下的矩阵，该矩阵在线性变换和基都确定的情况下唯一
+\item 设$\vec{\alpha}_1,\vec{\alpha}_2,\cdots,\vec{\alpha}_n$和$\vec{\beta}_1,\vec{\beta}_2,\cdots,\vec{\beta}_n$是$n$维向量空间$V_n$的两组基，由$\vec{\alpha}_1,\vec{\alpha}_2,\cdots,\vec{\alpha}_n$到$\vec{\beta}_1,\vec{\beta}_2,\cdots,\vec{\beta}_n$的过渡矩阵为$P$，而$V_n$中的线性变换$T$在这两个基下的矩阵分别为$A$和$B$，那么有$B=P^{-1}AP$
+\end{enumerate}
+
+
+
+
+
+\chapter{解题笔记}
+
+
+\section{矩阵}
+\begin{enumerate}
+\item 已知基础解系，反求齐次线性方程组\\
+假设原齐次线性方程组为$AX=O$，其基础解系为$\vec{a}_1,\vec{a}_2,\cdots,\vec{a}_r$，则我们有
+\[A\left[\vec{a}_1,\vec{a}_2,\cdots,\vec{a}_r\right]=O\]
+对上式取转置可得
+\[\begin{bmatrix}\vec{a}_1^T\\\vec{a}_2^T\\\vdots\\\vec{a}_r^T\end{bmatrix}A^T=O\]
+故我们可以将问题转换为求解齐次线性方程组$\left[\vec{a}_1,\vec{a}_2,\cdots,\vec{a}_r\right]^TX=O$，求出该方程组的基础解系后，假设其为$\vec{b}_1,\vec{b}_2,\cdots,\vec{b}_m$，则我们就可得
+\[A=\begin{bmatrix}\vec{b}_1^T\\\vec{b}_2^T\\\vdots\\\vec{b}_m^T\end{bmatrix}\]
+\item 求解两齐次线性方程组的公共解\\
+假设有两个齐次线性方程组$AX=O$和$BX=O$，则求其公共解可以将其联立，即转换为求方程$\begin{bmatrix}A\\B\end{bmatrix}X=O$的解；\\
+若对于两个齐次线性方程组我们仅分别知道其基础解系$\vec{a}_1,\vec{a}_2,\cdots,\vec{a}_r$和$\vec{b}_1,\vec{b}_2,\cdots,\vec{b}_m$，则我们可以求解线性方程组$k_1\vec{a}_1+k_2\vec{a}_2+\cdots+k_r\vec{a}_r=l_1\vec{b}_1+l_2\vec{b}_2+\cdots+l_m\vec{b}_m$得到$k_1,k_2,\cdots,k_r$与$l_1,l_2,\cdots,l_m$之间的关系，再代回$k_1\vec{a}_1+k_2\vec{a}_2+\cdots+k_r\vec{a}_r$或$l_1\vec{b}_1+l_2\vec{b}_2+\cdots+l_m\vec{b}_m$即可求得问题的解；\\
+若两个齐次线性方程组中一个知道方程组一个知道基础解系，则可以将基础解系代入另一个方程组中，求得该基础解系中的系数关系，从而得到公共解
+\item 求代数余子式的和、乘积等问题\\
+求解此类问题，可以考虑利用公式$AA^*=\left|A\right|E$先求出其伴随矩阵$A^*$，然后再求出问题的解\\
+例：已知$n$阶方阵为$A=\begin{pmatrix}1&1&\cdots&1&1\\0&1&\cdots&1&1\\\vdots&\vdots&\quad&\vdots&\vdots\\0&0&\cdots&0&1\end{pmatrix}$，求$A$中所有元素的代数余子式之和$\sum\limits_{i=1}^n\sum\limits_{j=1}^nA_{ij}$\\
+解：利用初等行变换可以简单得到
+\[A^{-1}=\begin{pmatrix}1&-1&0&\cdots&0&0\\0&1&-1&\cdots&0&0\\\vdots&\vdots&\vdots&\quad&\vdots&\vdots\\0&0&0&\cdots&1&-1\\0&0&0&\cdots&0&1\end{pmatrix}\]
+因而我们有
+\[A^*=\left|A\right|A^{-1}=1\cdot\begin{pmatrix}1&-1&0&\cdots&0&0\\0&1&-1&\cdots&0&0\\\vdots&\vdots&\vdots&\quad&\vdots&\vdots\\0&0&0&\cdots&1&-1\\0&0&0&\cdots&0&1\end{pmatrix}=\begin{pmatrix}1&-1&0&\cdots&0&0\\0&1&-1&\cdots&0&0\\\vdots&\vdots&\vdots&\quad&\vdots&\vdots\\0&0&0&\cdots&1&-1\\0&0&0&\cdots&0&1\end{pmatrix}\]
+所以$\sum\limits_{i=1}^n\sum\limits_{j=1}^nA_{ij}=1$
+\item 对角化法求行列式的值\\
+若一个矩阵可对角化，且我们知道它的$n$个特征值，则行列式$\left|A+kE\right|$可以通过下述方法求得：
+\[\left|A+kE\right|=\left|P\Lambda P^{-1}+kPP^{-1}\right|=\left|P\right|\left|\Lambda+kE\right|\left|P^{-1}\right|=\left|\operatorname{diag}\left(\lambda_1+k,\cdots,\lambda_n+k\right)\right|=\prod\limits_{i=1}^n\left(\lambda_i+k\right)\]
+\item 反证法\\
+证明题经常使用，若正向证明没思路一定不要忘了尝试反证\\
+例：若$A^2=A$，且$A$不为单位矩阵，则$A$必为奇异矩阵\\
+解：假设$A$为非奇异矩阵，则$A^{-1}$存在，则我们有
+\[A=A^{-1}AA=A^{-1}A^2=A^{-1}A=E\]
+与题设中$A$不为单位矩阵矛盾，故假设不成立，命题得证
+\item 分块矩阵法\\
+对于一些求矩阵高阶次幂的题，可以将矩阵分块再求幂\\
+例：已知$B=\begin{pmatrix}a&1&0&0\\0&a&0&0\\0&0&b&0\\0&0&1&b\end{pmatrix}$，求$B^n\ \left(n\geq2\right)$\\
+解：设$A_1=\begin{pmatrix}a&1\\0&a\end{pmatrix}$，$B_1=\begin{pmatrix}b&0\\1&b\end{pmatrix}$，则$B^n=\begin{pmatrix}A_1^n&O\\O&B_1^n\end{pmatrix}$，而易知$A_1^n=\begin{pmatrix}a^n&na^{n-1}\\0&a^n\end{pmatrix}$，$B_1^n=\begin{pmatrix}b^n&0\\nb^{n-1}&b^n\end{pmatrix}$，故$B^n=\begin{pmatrix}a^n&na^{n-1}&0&0\\0&a^n&0&0\\0&0&b^n&0\\0&0&nb^{n-1}&b^n\end{pmatrix}$
+\end{enumerate}
+
+
+\section{向量组的线性相关性}
+\begin{enumerate}
+\item 矩阵方程证明线性相关性\\
+例：设$\vec{\beta}_1=\vec{\alpha}_1+\vec{\alpha}_2$，$\vec{\beta}_2=\vec{\alpha}_2+\vec{\alpha}_3$，$\vec{\beta}_3=\vec{\alpha}_3+\vec{\alpha}_4$，$\vec{\beta}_4=\vec{\alpha}_4+\vec{\alpha}_1$，证明向量组$\vec{\beta}_1,\vec{\beta}_2,\vec{\beta}_3,\vec{\beta}_4$线性相关\\
+解：向量组的矩阵形式可以写为：
+\[\left[\vec{\beta}_1,\vec{\beta}_2,\vec{\beta}_3,\vec{\beta}_4\right]=\left[\vec{\alpha}_1,\vec{\alpha}_2,\vec{\alpha}_3,\vec{\alpha}_4\right]K\]
+其中
+\[K=\begin{pmatrix}1&0&0&1\\1&1&0&0\\0&1&1&0\\0&0&1&1\end{pmatrix}\]
+由于
+\[R\left(\left[\vec{\beta}_1,\vec{\beta}_2,\vec{\beta}_3,\vec{\beta}_4\right]\right)=R\left(\left[\vec{\alpha}_1,\vec{\alpha}_2,\vec{\alpha}_3,\vec{\alpha}_4\right]K\right)\leq\min\left\{R\left(\left[\vec{\alpha}_1,\vec{\alpha}_2,\vec{\alpha}_3,\vec{\alpha}_4\right]\right),R\left(K\right)\right\}\]
+而我们有$\left|K\right|=0$，故$R\left(K\right)\leq3$，故$R\left(\left[\vec{\beta}_1,\vec{\beta}_2,\vec{\beta}_3,\vec{\beta}_4\right]\right)\leq3$，向量组线性相关
+\end{enumerate}
+
+
+\section{矩阵的特征值和特征向量}
+\begin{enumerate}
+\item 利用矩阵特征值性质证明相似\\
+例：证明下列两个$n$阶矩阵相似：
+\[A=\begin{pmatrix}1&1&\cdots&1\\1&1&\cdots&1\\\vdots&\vdots&\ &\vdots\\1&1&\cdots&1\\\end{pmatrix},\ B=\begin{pmatrix}n&0&\cdots&0\\1&0&\cdots&0\\\vdots&\vdots&\ &\vdots\\1&0&\cdots&0\\\end{pmatrix}\]
+解：易知矩阵$A$和$B$的秩均为1，且矩阵的迹均为$n$，故显然两个矩阵的特征值均为$\lambda_1=n,\lambda_2=\lambda_3=\cdots=\lambda_n=0$\\
+而矩阵$A$为实对称矩阵，显然其可对角化，而对于矩阵$B$，方程$B\vec{x}=0$由于$B$的秩为1，所以该方程的基础解系有$n-1$个线性无关的向量，故矩阵$B$的零特征值有$n-1$个线性无关的特征向量，$B$总共有$n$个线性无关的特征向量，故矩阵$B$也可对角化
+故由于矩阵$A$和$B$的特征值均相同，且均可对角化，故矩阵$A$和$B$相似
+\end{enumerate}
+
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

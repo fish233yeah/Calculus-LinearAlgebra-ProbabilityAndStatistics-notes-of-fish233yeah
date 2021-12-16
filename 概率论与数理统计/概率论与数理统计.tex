@@ -267,6 +267,7 @@ $\begin{matrix}\dfrac{2n_2^2\left(n_1+n_2-2\right)}{n_1\left(n_2-2\right)^2\left
 \[f_{Y|X}\left(y|x\right)=\frac{f\left(x,y\right)}{f_X\left(x\right)}=\frac{f_X\left(x\right)f_Y\left(y\right)}{f_X\left(x\right)}=f_Y\left(y\right)\]
 即二维随机变量$X,Y$相互独立的充要条件为$X,Y$的所有条件分布都与其边缘分布相同
 \item 设多维随机变量$\left(X_1,X_2,\cdots,X_m\right)$和$\left(Y_1,Y_2,\cdots,Y_n\right)$相互独立，则$X_i$和$Y_j$相互独立。又若$h$，$g$是连续函数，则$h\left(X_1,X_2,\cdots,X_m\right)$和$g\left(Y_1,Y_2,\cdots,Y_n\right)$相互独立
+\item 独立一定不相关，不相关不一定独立
 \end{enumerate}
 
 \subsection{二维随机变量函数$Z=g\left(X,Y\right)$的分布}
@@ -392,8 +393,9 @@ $\begin{matrix}\dfrac{2n_2^2\left(n_1+n_2-2\right)}{n_1\left(n_2-2\right)^2\left
 \begin{enumerate}
 \item $E\left(kX\pm c\right)=kE\left(X\right)\pm c,\ D\left(kX\pm c\right)=k^2D\left(X\right)$
 \item $E\left(X_1\pm X_2\right)=E\left(X_1\right)\pm E\left(X_2\right),\ D\left(X_1\pm X_2\right)=D\left(X_1\right)+D\left(X_2\right)\pm\operatorname{Cov}\left(X_1,X_2\right)$
-\item 若$X$与$Y$相互独立，则有
+\item 若$X$与$Y$不相关，则有
 \[E\left(XY\right)=E\left(X\right)E\left(Y\right)\]
+\item 若$X$与$Y$相互独立，则有
 \[D\left(XY\right)=D\left(X\right)D\left(Y\right)+\left[E\left(X\right)\right]^2D\left(Y\right)+\left[E\left(Y\right)\right]^2D\left(X\right)\]
 \item 若$X$与$Y$相互独立，$g\left(x\right)$和$h\left(x\right)$是两个连续函数，则$U=g\left(X\right)$和$V=h\left(Y\right)$也都是随机变量，且$U$和$V$相互独立
 \end{enumerate}

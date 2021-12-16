@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2021.12.1)  14 DEC 2021 22:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2021.12.1)  16 DEC 2021 14:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1326,22 +1326,22 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [5]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 272.
+(hyperref)                removing `math shift' on input line 273.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\left' on input line 272.
+(hyperref)                removing `\left' on input line 273.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\right' on input line 272.
+(hyperref)                removing `\right' on input line 273.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 272.
+(hyperref)                removing `math shift' on input line 273.
 
 
-Overfull \hbox (3.83392pt too wide) in paragraph at lines 306--307
+Overfull \hbox (3.83392pt too wide) in paragraph at lines 307--308
 []\C70/rm/m/n/12/4e å \C70/rm/m/n/12/7e Ù \C70/rm/m/n/12/6b c \C70/rm/m/n/12/60
  ^^A \C70/rm/m/n/12/96 è \C70/rm/m/n/12/67 : \C70/rm/m/n/12/53 ÿ \C70/rm/m/n/12
 /91 œ$[] \OMS/txsy/m/n/12 ^^X \OML/txmi/m/it/12 N []$\C70/rm/m/n/12/76 Ñ \C70/r
@@ -1352,7 +1352,7 @@ rm/m/n/12/76 Ñ
  []
 
 [6]
-Overfull \hbox (7.87546pt too wide) in paragraph at lines 311--312
+Overfull \hbox (7.87546pt too wide) in paragraph at lines 312--313
 []$[]$\C70/rm/m/n/12/67 ^^M \C70/rm/m/n/12/4e Œ å \C70/rm/m/n/12/7e Ù \C70/rm/m
 /n/12/6b c \C70/rm/m/n/12/60 ^^A \C70/rm/m/n/12/52 ^^F \C70/rm/m/n/12/5e ^^C \C
 70/rm/m/n/12/76 Ñ \C70/rm/m/n/12/51 E \C70/rm/m/n/12/52 ^^F \C70/rm/m/n/12/5f ≈
@@ -1365,7 +1365,7 @@ i/m/it/12 l[]Y$ |\C70/rm/m/n/12/ff ^^H|$\OML/txmi/m/it/12 l[]; l[]$\C70/rm/m/n/
  []
 
 
-Overfull \hbox (20.50705pt too wide) in paragraph at lines 327--328
+Overfull \hbox (20.50705pt too wide) in paragraph at lines 328--329
 []\C70/rm/m/n/12/5b ˘ \C70/rm/m/n/12/4e é \C70/rm/m/n/12/8f ﬁ \C70/rm/m/n/12/7e
  Ì \C70/rm/m/n/12/57 ã \C70/rm/m/n/12/96 è \C70/rm/m/n/12/67 : \C70/rm/m/n/12/5
 3 ÿ \C70/rm/m/n/12/91 œ$\OML/txmi/m/it/12 X$|\C70/rm/m/n/12/ff ^^L| \C70/rm/m/n
@@ -1378,7 +1378,7 @@ Y$\OML/txmi/m/it/12 X$\C70/rm/m/n/12/76 Ñ
  []
 
 
-Overfull \hbox (10.95464pt too wide) in paragraph at lines 333--334
+Overfull \hbox (10.95464pt too wide) in paragraph at lines 334--335
 []\C70/rm/m/n/12/5b ˘ \C70/rm/m/n/12/4e é \C70/rm/m/n/12/79 ª \C70/rm/m/n/12/65
  c \C70/rm/m/n/12/57 ã \C70/rm/m/n/12/96 è \C70/rm/m/n/12/67 : \C70/rm/m/n/12/5
 3 ÿ \C70/rm/m/n/12/91 œ$\OML/txmi/m/it/12 X$|\C70/rm/m/n/12/ff ^^L| \C70/rm/m/n
@@ -1390,7 +1390,7 @@ k \OT1/txr/m/n/12 = 1\OML/txmi/m/it/12 ; \OT1/txr/m/n/12 2\OML/txmi/m/it/12 ; [
  []
 
 
-Overfull \hbox (0.81914pt too wide) in paragraph at lines 335--336
+Overfull \hbox (0.81914pt too wide) in paragraph at lines 336--337
 []\C70/rm/m/n/12/5b ˘ \C70/rm/m/n/12/4e é \C70/rm/m/n/12/8f ﬁ \C70/rm/m/n/12/7e
  Ì \C70/rm/m/n/12/57 ã \C70/rm/m/n/12/96 è \C70/rm/m/n/12/67 : \C70/rm/m/n/12/5
 3 ÿ \C70/rm/m/n/12/91 œ$\OML/txmi/m/it/12 X$|\C70/rm/m/n/12/ff ^^L| \C70/rm/m/n
@@ -1402,7 +1402,7 @@ C70/rm/m/n/12/52 ^^F$[][] \OML/txmi/m/it/12 g [] f [] dx$\C70/rm/m/n/12/7e › \C
  []
 
 [7]
-Overfull \hbox (32.42294pt too wide) in paragraph at lines 346--347
+Overfull \hbox (32.42294pt too wide) in paragraph at lines 347--348
 []\C70/rm/m/n/12/5b ˘ \C70/rm/m/n/12/4e é \C70/rm/m/n/12/8f ﬁ \C70/rm/m/n/12/7e
  Ì \C70/rm/m/n/12/57 ã \C70/rm/m/n/12/96 è \C70/rm/m/n/12/67 : \C70/rm/m/n/12/5
 3 ÿ \C70/rm/m/n/12/91 œ$[]$|\C70/rm/m/n/12/ff ^^L| \C70/rm/m/n/12/8b æ \C70/rm/
@@ -1413,7 +1413,7 @@ m/n/12/69 Ç \C70/rm/m/n/12/73 á \C70/rm/m/n/12/5b ∆ \C70/rm/m/n/12/5e ¶ \C70/rm
  []
 
 [8]
-Overfull \hbox (32.42294pt too wide) in paragraph at lines 383--384
+Overfull \hbox (32.42294pt too wide) in paragraph at lines 384--385
 []\C70/rm/m/n/12/5b ˘ \C70/rm/m/n/12/4e é \C70/rm/m/n/12/8f ﬁ \C70/rm/m/n/12/7e
  Ì \C70/rm/m/n/12/57 ã \C70/rm/m/n/12/96 è \C70/rm/m/n/12/67 : \C70/rm/m/n/12/5
 3 ÿ \C70/rm/m/n/12/91 œ$[]$|\C70/rm/m/n/12/ff ^^L| \C70/rm/m/n/12/8b æ \C70/rm/
@@ -1423,8 +1423,8 @@ m/n/12/69 Ç \C70/rm/m/n/12/73 á \C70/rm/m/n/12/5b ∆ \C70/rm/m/n/12/5e ¶ \C70/rm
 ^^F$[][] [][] \OML/txmi/m/it/12 g [] f [] dxdy$
  []
 
-[9] [10] [11]
-Overfull \hbox (11.49751pt too wide) in paragraph at lines 490--491
+[9] [10] [11] [12]
+Overfull \hbox (11.49751pt too wide) in paragraph at lines 492--493
 []\C70/rm/b/n/12/52 ^^W \C70/rm/b/n/12/7e Ù\OT1/txr/bx/n/12 -\C70/rm/b/n/12/67 
 ó \C70/rm/b/n/12/5f ∑ \C70/rm/b/n/12/4f / \C70/rm/b/n/12/68 < \C70/rm/b/n/12/4e
  - \C70/rm/b/n/12/5f √ \C70/rm/b/n/12/67 Å \C70/rm/b/n/12/96 P \C70/rm/b/n/12/5
@@ -1437,8 +1437,8 @@ n/12/7a À \C70/rm/b/n/12/54 ^^L \C70/rm/b/n/12/52 ^^F \C70/rm/b/n/12/5e ^^C \C7
 2/52 ^^W$\OML/txmi/m/it/12 X[]; X[]; [] $\C70/rm/m/n/12/76 ¯
  []
 
-[12]
-Overfull \hbox (0.61687pt too wide) in paragraph at lines 506--509
+
+Overfull \hbox (0.61687pt too wide) in paragraph at lines 508--511
 []\C70/rm/b/n/12/7e ﬂ \C70/rm/b/n/12/8b ° \C70/rm/b/n/12/91 œ|\C70/rm/m/n/12/ff
  ^^Z| \C70/rm/m/n/12/8b æ$\OML/txmi/m/it/12 X[]; X[]; []  ; X[]$\C70/rm/m/n/12/
 66 / \C70/rm/m/n/12/67 e \C70/rm/m/n/12/81 Í \C70/rm/m/n/12/60 ; \C70/rm/m/n/12
@@ -1451,58 +1451,60 @@ C70/rm/m/n/12/66 /$\OML/txmi/m/it/12 X[]; X[]; []  ; X[]$\C70/rm/m/n/12/76 Ñ \C
 [13]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 518.
+(hyperref)                removing `math shift' on input line 520.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\Gamma' on input line 518.
+(hyperref)                removing `\Gamma' on input line 520.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 518.
+(hyperref)                removing `math shift' on input line 520.
 
-<./figure/chi.pdf, id=580, 462.52798pt x 346.89601pt>
+<./figure/chi.pdf, id=579, 462.52798pt x 346.89601pt>
 File: ./figure/chi.pdf Graphic file (type pdf)
 <use ./figure/chi.pdf>
-Package pdftex.def Info: ./figure/chi.pdf  used on input line 538.
+Package pdftex.def Info: ./figure/chi.pdf  used on input line 540.
 (pdftex.def)             Requested size: 277.51892pt x 208.1392pt.
-[14 <./figure/chi.pdf>]
-<./figure/chi_alpha.pdf, id=616, 462.52798pt x 346.89601pt>
+[14]
+<./figure/chi_alpha.pdf, id=597, 462.52798pt x 346.89601pt>
 File: ./figure/chi_alpha.pdf Graphic file (type pdf)
 <use ./figure/chi_alpha.pdf>
-Package pdftex.def Info: ./figure/chi_alpha.pdf  used on input line 550.
+Package pdftex.def Info: ./figure/chi_alpha.pdf  used on input line 552.
 (pdftex.def)             Requested size: 277.51892pt x 208.1392pt.
-<./figure/t.pdf, id=617, 462.52798pt x 346.89601pt>
+ [15 <./figure/chi.pdf> <./figure/chi_alpha.pdf
+
+pdfTeX warning: pdflatex.exe (file ./figure/chi_alpha.pdf): PDF inclusion: mult
+iple pdfs with page group included in a single page
+>]
+<./figure/t.pdf, id=658, 462.52798pt x 346.89601pt>
 File: ./figure/t.pdf Graphic file (type pdf)
 <use ./figure/t.pdf>
-Package pdftex.def Info: ./figure/t.pdf  used on input line 557.
+Package pdftex.def Info: ./figure/t.pdf  used on input line 559.
 (pdftex.def)             Requested size: 277.51892pt x 208.1392pt.
- [15 <./figure/chi_alpha.pdf>]
 <./figure/t_alpha.pdf, id=659, 462.52798pt x 346.89601pt>
 File: ./figure/t_alpha.pdf Graphic file (type pdf)
 <use ./figure/t_alpha.pdf>
-Package pdftex.def Info: ./figure/t_alpha.pdf  used on input line 566.
+Package pdftex.def Info: ./figure/t_alpha.pdf  used on input line 568.
 (pdftex.def)             Requested size: 277.51892pt x 208.1392pt.
- [16 <./figure/t.pdf> <./figure/t_alpha.pdf
-
-pdfTeX warning: pdflatex.exe (file ./figure/t_alpha.pdf): PDF inclusion: multip
-le pdfs with page group included in a single page
->]
-<./figure/F.pdf, id=716, 462.52798pt x 346.89601pt>
+ [16 <./figure/t.pdf>]
+<./figure/F.pdf, id=687, 462.52798pt x 346.89601pt>
 File: ./figure/F.pdf Graphic file (type pdf)
 <use ./figure/F.pdf>
-Package pdftex.def Info: ./figure/F.pdf  used on input line 573.
+Package pdftex.def Info: ./figure/F.pdf  used on input line 575.
 (pdftex.def)             Requested size: 277.51892pt x 208.1392pt.
-<./figure/F_alpha.pdf, id=717, 462.52798pt x 346.89601pt>
+ [17 <./figure/t_alpha.pdf> <./figure/F.pdf
+
+pdfTeX warning: pdflatex.exe (file ./figure/F.pdf): PDF inclusion: multiple pdf
+s with page group included in a single page
+>]
+<./figure/F_alpha.pdf, id=745, 462.52798pt x 346.89601pt>
 File: ./figure/F_alpha.pdf Graphic file (type pdf)
 <use ./figure/F_alpha.pdf>
-Package pdftex.def Info: ./figure/F_alpha.pdf  used on input line 582.
+Package pdftex.def Info: ./figure/F_alpha.pdf  used on input line 584.
 (pdftex.def)             Requested size: 277.51892pt x 208.1392pt.
 
-Underfull \vbox (badness 4686) has occurred while \output is active []
-
- [17 <./figure/F.pdf>]
-Overfull \hbox (16.3012pt too wide) in paragraph at lines 592--593
+Overfull \hbox (16.3012pt too wide) in paragraph at lines 594--595
 []\C70/rm/b/n/12/4e $ * \C70/rm/b/n/12/6b c \C70/rm/b/n/12/60 ^^A ; \C70/rm/b/n
 /12/4f S \C70/rm/b/n/12/68 7 \C70/rm/b/n/12/67 , \C70/rm/b/n/12/57 G \C70/rm/b/
 n/12/50 < \C70/rm/b/n/12/52 ^^F \C70/rm/b/n/12/5e ^^C|\C70/rm/m/n/12/ff ^^Z| \C
@@ -1513,7 +1515,7 @@ OML/txmi/m/it/12 Y[]; Y[]; []  ; Y[]$\C70/rm/m/n/12/52 ^^F + \C70/rm/m/n/12/66
  []
 
 [18 <./figure/F_alpha.pdf>] [19]
-Overfull \hbox (0.93497pt too wide) in paragraph at lines 630--631
+Overfull \hbox (0.93497pt too wide) in paragraph at lines 632--633
 []\C70/rm/m/n/12/82 Â$[]\OML/txmi/m/it/12 ;  []$\C70/rm/m/n/12/4e : \C70/rm/m/n
 /12/53 ¬ \C70/rm/m/n/12/65 p$\OML/txmi/m/it/12 ^^R[];  ^^R[]$\C70/rm/m/n/12/76 
 Ñ \C70/rm/m/n/12/77 È \C70/rm/m/n/12/4f 0 \C70/rm/m/n/12/8b ° \C70/rm/m/n/12/91
@@ -1524,7 +1526,7 @@ rm/m/n/12/65 p|\C70/rm/m/n/12/ff ^^L| \C70/rm/m/n/12/52 ^^Y$\OML/txmi/m/it/12 g
  []
 
 
-Overfull \hbox (10.35963pt too wide) in paragraph at lines 639--640
+Overfull \hbox (10.35963pt too wide) in paragraph at lines 641--642
 []\C70/rm/b/n/12/53 U ¬ \C70/rm/b/n/12/65 p \C70/rm/b/n/12/67 Å \C70/rm/b/n/12/
 59 ' \C70/rm/b/n/12/4f < \C70/rm/b/n/12/71 6 \C70/rm/b/n/12/4f 0 \C70/rm/b/n/12
 /8b °|\C70/rm/m/n/12/ff ^^Z| \C70/rm/m/n/12/5b ˘ \C70/rm/m/n/12/4e é \C70/rm/m/
@@ -1536,7 +1538,7 @@ m/m/n/12/51 v \C70/rm/m/n/12/68 7 \C70/rm/m/n/12/67 ,|\C70/rm/m/n/12/ff ^^L| \C
  []
 
 
-Overfull \hbox (24.44917pt too wide) in paragraph at lines 640--642
+Overfull \hbox (24.44917pt too wide) in paragraph at lines 642--644
 \C70/rm/m/n/12/52 ^^Y \C70/rm/m/n/12/79  \C70/rm/m/n/12/4f < \C70/rm/m/n/12/71
  6 \C70/rm/m/n/12/51 ˝ \C70/rm/m/n/12/65 p \C70/rm/m/n/12/76 Ñ \C70/rm/m/n/12/6
 7 ^^@ \C70/rm/m/n/12/59 ' \C70/rm/m/n/12/50 < \C70/rm/m/n/12/70 π$[] []$\C70/rm
@@ -1548,7 +1550,7 @@ n/12/4e :
  []
 
 
-Overfull \hbox (41.24763pt too wide) in paragraph at lines 645--646
+Overfull \hbox (41.24763pt too wide) in paragraph at lines 647--648
 []\C70/rm/b/n/12/59 ^^Z \C70/rm/b/n/12/53 ¬ \C70/rm/b/n/12/65 p \C70/rm/b/n/12/
 67 Å \C70/rm/b/n/12/59 ' \C70/rm/b/n/12/4f < \C70/rm/b/n/12/71 6 \C70/rm/b/n/12
 /4f 0 \C70/rm/b/n/12/8b °|\C70/rm/m/n/12/ff ^^Z| \C70/rm/m/n/12/5b ˘ \C70/rm/m/
@@ -1561,7 +1563,7 @@ n/12/ff ^^L|
  []
 
 
-Overfull \hbox (32.11717pt too wide) in paragraph at lines 646--648
+Overfull \hbox (32.11717pt too wide) in paragraph at lines 648--650
 \C70/rm/m/n/12/52 ^^Y \C70/rm/m/n/12/79  \C70/rm/m/n/12/4f < \C70/rm/m/n/12/71
  6 \C70/rm/m/n/12/51 ˝ \C70/rm/m/n/12/65 p \C70/rm/m/n/12/76 Ñ \C70/rm/m/n/12/6
 7 ^^@ \C70/rm/m/n/12/59 ' \C70/rm/m/n/12/50 < \C70/rm/m/n/12/70 π$[] []$\C70/rm
@@ -1572,8 +1574,8 @@ C70/rm/m/n/12/71 6 \C70/rm/m/n/12/4f 0 \C70/rm/m/n/12/8b ° \C70/rm/m/n/12/50 <|
 m/n/12/4e :
  []
 
-
-Overfull \hbox (36.93497pt too wide) in paragraph at lines 651--652
+[20]
+Overfull \hbox (36.93497pt too wide) in paragraph at lines 653--654
 []\C70/rm/m/n/12/82 Â$[]\OML/txmi/m/it/12 ;  []$\C70/rm/m/n/12/4e : \C70/rm/m/n
 /12/53 ¬ \C70/rm/m/n/12/65 p$\OML/txmi/m/it/12 ^^R[];  ^^R[]$\C70/rm/m/n/12/76 
 Ñ \C70/rm/m/n/12/67 Å \C70/rm/m/n/12/59 ' \C70/rm/m/n/12/4f < \C70/rm/m/n/12/71
@@ -1585,7 +1587,7 @@ rm/m/n/12/8f ﬁ \C70/rm/m/n/12/7e Ì \C70/rm/m/n/12/51 ˝ \C70/rm/m/n/12/65 p|\C70
  []
 
 
-Overfull \hbox (14.23232pt too wide) in paragraph at lines 652--653
+Overfull \hbox (14.23232pt too wide) in paragraph at lines 654--655
 \C70/rm/m/n/12/91 œ \C70/rm/m/n/12/76 ¯ \C70/rm/m/n/12/54 ^^L|\C70/rm/m/n/12/ff
  ^^L| \C70/rm/m/n/12/57 G \C70/rm/m/n/12/4e :$[] [] \OML/txmi/m/it/12 X[]$|\C70
 /rm/m/n/12/ff ^^[| \C70/rm/m/n/12/51 v \C70/rm/m/n/12/65 π \C70/rm/m/n/12/5d Ó 
@@ -1597,8 +1599,8 @@ Overfull \hbox (14.23232pt too wide) in paragraph at lines 652--653
 $ 
  []
 
-[20]
-Overfull \hbox (34.5817pt too wide) in paragraph at lines 669--670
+
+Overfull \hbox (34.5817pt too wide) in paragraph at lines 671--672
 []\C70/rm/m/n/12/4e ˚ \C70/rm/m/n/12/61 ^^O \C70/rm/m/n/12/68 7 \C70/rm/m/n/12/
 67 , \C70/rm/m/n/12/53 ü \C70/rm/m/n/12/70 π \C70/rm/m/n/12/77 È \C70/rm/m/n/12
 /66 / \C70/rm/m/n/12/60 ; \C70/rm/m/n/12/4f S \C70/rm/m/n/12/53 ü \C70/rm/m/n/1
@@ -1611,7 +1613,7 @@ n/12/81 Ù \C70/rm/m/n/12/4f 0 \C70/rm/m/n/12/8b ° \C70/rm/m/n/12/91 œ|\C70/rm/m
  []
 
 [21] [22]
-Overfull \hbox (29.5148pt too wide) in paragraph at lines 731--732
+Overfull \hbox (29.5148pt too wide) in paragraph at lines 733--734
 []\C70/rm/m/n/12/82 Â$[]$\C70/rm/m/n/12/4e :$\OML/txmi/m/it/12 ^^R$\C70/rm/m/n/
 12/76 Ñ \C70/rm/m/n/12/7f n \C70/rm/m/n/12/4f · \C70/rm/m/n/12/5e ¶ \C70/rm/m/n
 /12/4e :$\OT1/txr/m/n/12 1 \OMS/txsy/m/n/12 ^^@ \OML/txmi/m/it/12 $\C70/rm/m/n
@@ -1627,24 +1629,24 @@ Chapter 2.
 [25
 
 ] [26]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 778.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 778.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 780.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 780.
  (./Ê¶ÇÁéáËÆ∫‰∏éÊï∞ÁêÜÁªüËÆ°.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 778.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 778.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 780.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 780.
 Package rerunfilecheck Info: File `Ê¶ÇÁéáËÆ∫‰∏éÊï∞ÁêÜÁªüËÆ°.out' has not change
 d.
 (rerunfilecheck)             Checksum: EAA84C3286CEEAAAA6A6059A1C21282F;4597.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 778.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 780.
  ) 
 Here is how much of TeX's memory you used:
- 27933 strings out of 480608
- 497763 string characters out of 5900632
+ 27935 strings out of 480608
+ 497779 string characters out of 5900632
  756673 words of memory out of 5000000
  42578 multiletter control sequences out of 15000+600000
  661009 words of font info for 429 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 52i,16n,68p,573b,658s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 52i,16n,68p,573b,668s stack positions out of 5000i,500n,10000p,200000b,80000s
 <c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/s
 imsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simhei.ttf><c:/Windows
 /Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simsun.ttc><c:
@@ -1708,10 +1710,10 @@ indows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><d:/Program Files/texlive/
 xmf-dist/fonts/type1/urw/times/utmr8a.pfb><d:/Program Files/texlive/2020/texmf-
 dist/fonts/type1/urw/times/utmr8a.pfb><d:/Program Files/texlive/2020/texmf-dist
 /fonts/type1/urw/times/utmri8a.pfb>
-Output written on Ê¶ÇÁéáËÆ∫‰∏éÊï∞ÁêÜÁªüËÆ°.pdf (30 pages, 775065 bytes).
+Output written on Ê¶ÇÁéáËÆ∫‰∏éÊï∞ÁêÜÁªüËÆ°.pdf (30 pages, 774487 bytes).
 PDF statistics:
- 1382 PDF objects out of 1440 (max. 8388607)
- 1009 compressed objects within 11 object streams
- 230 named destinations out of 1000 (max. 500000)
+ 1383 PDF objects out of 1440 (max. 8388607)
+ 1010 compressed objects within 11 object streams
+ 232 named destinations out of 1000 (max. 500000)
  615 words of extra memory for PDF output out of 10000 (max. 10000000)
 

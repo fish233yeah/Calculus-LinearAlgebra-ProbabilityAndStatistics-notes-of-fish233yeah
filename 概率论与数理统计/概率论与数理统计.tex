@@ -64,6 +64,7 @@ $P\left(A_1A_2\cdots A_n\right)=P\left(A_1\right)P\left(A_2|A_1\right)P\left(A_3
 \[P\left\{X=k\right\}=p^k\left(1-p\right)^{1-k},\quad k=0,1\]
 \item \textbf{二项分布}：设试验$E$只有两个可能的结果$A$和$\overline{A}$，$P\left(A\right)=p$，则称$E$为伯努利试验，我们将试验$E$独立重复$n$次的话则称其为$n$重伯努利试验。现在假设我们用$X$表示$n$重伯努利试验中事件$A$发生的次数，则其符合二项分布，记为$X\sim b\left(n,p\right)$或$X\sim B\left(n,p\right)$，分布律为：
 \[P\left\{X=k\right\}=C_{n}^{k}p^k\left(1-p\right)^{n-k},\quad k=0,1,2,\cdots,n\]
+若有$X\sim B\left(m,p\right)$，$Y\sim B\left(n,p\right)$，且$X$和$Y$相互独立，则$X+Y\sim B\left(m+n,p\right)$
 \item \textbf{泊松分布}：设随机变量$X$所有可能取的值为$0,1,2,\cdots$，分布率为：
 \[P\left\{X=k\right\}=\frac{\lambda^ke^{-\lambda}}{k!},\quad k=0,1,2,\cdots\]
 其中$\lambda>0$，此时我们称随机变量$X$服从参数为$\lambda$的泊松分布，记为$X\sim \pi\left(\lambda\right)$或$X\sim P\left(\lambda\right)$。此外，若我们记$np_n=\lambda$，我们还有泊松定理：
@@ -114,7 +115,7 @@ $P\left(A_1A_2\cdots A_n\right)=P\left(A_1\right)P\left(A_2|A_1\right)P\left(A_3
 \end{enumerate}
 
 \subsection{完整概率分布表}
-\begin{scriptsize}
+\begin{footnotesize}
 \begin{center}
 \begin{longtable}{|c|c|c|c|c|}\hline
 分布&参数&分布律或概率密度函数&期望&方差\\
@@ -231,7 +232,7 @@ $\begin{matrix}\dfrac{2n_2^2\left(n_1+n_2-2\right)}{n_1\left(n_2-2\right)^2\left
 \label{tab:Margin_settings}
 \end{longtable}
 \end{center}
-\end{scriptsize}
+\end{footnotesize}
 
 
 \section{多维随机变量及其分布}
@@ -537,7 +538,7 @@ $\begin{matrix}\dfrac{2n_2^2\left(n_1+n_2-2\right)}{n_1\left(n_2-2\right)^2\left
 服从自由度为$n$的$\chi^2$分布，记为$\chi^2\sim\chi^2\left(n\right)$，概率密度函数为
 \[f\left(x\right)=\left\{\begin{matrix}\dfrac{1}{2^{\frac{n}{2}}\Gamma\left(\frac{n}{2}\right)}x^{\frac{n}{2}-1}e^{-\frac{x}{2}}\ ,&x>0\\0\ ,&else\end{matrix}\right.\]
 函数图像为：
-\begin{center}\includegraphics[scale=0.6]{./figure/chi.pdf}\end{center}
+\begin{center}\includegraphics[scale=0.5]{./figure/chi.pdf}\end{center}
 $\chi^2$分布性质：
 \begin{enumerate}
 \item 设$\chi_1^2\sim\chi^2\left(n_1\right)$，$\chi_2^2\sim\chi^2\left(n_2\right)$，且$\chi_1^2$和$\chi_2^2$相互独立，则有
@@ -549,14 +550,14 @@ $\chi^2$分布性质：
 \item 设$\chi^2\sim\chi^2\left(n\right)$，对于给定的正数$\alpha\in\left(0,1\right)$，则满足
 \[P\left\{\chi^2>\chi_{\alpha}^2\left(n\right)\right\}=\alpha\]
 的点$x=\chi_{\alpha}^2\left(n\right)$称为$\chi^2$的上$\alpha$分位点
-\begin{center}\includegraphics[scale=0.6]{./figure/chi_alpha.pdf}\end{center}
+\begin{center}\includegraphics[scale=0.5]{./figure/chi_alpha.pdf}\end{center}
 \end{enumerate}
 \item \textbf{$t$分布}：设$X\sim N\left(0,1\right),\ Y\sim\chi^2\left(n\right)$，且$X,\ Y$相互独立，则称随机变量
 \[t=\frac{X}{\sqrt{\frac{Y}{n}}}\]
 服从自由度为$n$的$t$分布，记为$t\sim t\left(n\right)$，概率密度函数为
 \[f\left(x\right)=\dfrac{\Gamma\left(\dfrac{n+1}{2}\right)}{\sqrt{n\pi}\cdot\Gamma\left(\dfrac{n}{2}\right)}\left(1+\dfrac{x^2}{n}\right)^{-\frac{n+1}{2}}\]
 函数图像为：
-\begin{center}\includegraphics[scale=0.6]{./figure/t.pdf}\end{center}
+\begin{center}\includegraphics[scale=0.5]{./figure/t.pdf}\end{center}
 $t$分布性质：
 \begin{enumerate}
 \item 对于$t$分布的密度函数$f\left(x\right)$我们有
@@ -565,14 +566,14 @@ $t$分布性质：
 \item 设$t\sim t\left(n\right)$，对于给定的正数$\alpha\in\left(0,1\right)$，则满足
 \[P\left\{t>t_{\alpha}\left(n\right)\right\}=\alpha\]
 的点$x=t_{\alpha}\left(n\right)$称为$t$的上$\alpha$分位点
-\begin{center}\includegraphics[scale=0.6]{./figure/t_alpha.pdf}\end{center}
+\begin{center}\includegraphics[scale=0.5]{./figure/t_alpha.pdf}\end{center}
 \end{enumerate}
 \item \textbf{$F$分布}：设$U\sim\chi^2\left(n_1\right),\ V\sim\chi^2\left(n_2\right)$，且$U,\ V$相互独立，则称随机变量
 \[F=\frac{\ \frac{U}{n_1}\ }{\ \frac{V}{n_2}\ }\]
 服从自由度为$\left(n_1,n_2\right)$的$F$分布，记为$F\sim F\left(n_1,n_2\right)$，概率密度函数为
 \[f\left(x\right)=\left\{\begin{matrix}\dfrac{\Gamma\left(\dfrac{n_1+n_2}{2}\right)\cdot\left(\dfrac{n_1}{n_2}\right)^{\frac{n_1}{2}}\cdot x^{\frac{n_1}{2}-1}}{\Gamma\left(\dfrac{n_1}{2}\right)\cdot\Gamma\left(\dfrac{n_2}{2}\right)\cdot\left(1+\dfrac{n_1}{n_2}x\right)^{\frac{n_1+n_2}{2}}}\ ,&x>0\\0\ ,&else\end{matrix}\right.\]
 函数图像为：
-\begin{center}\includegraphics[scale=0.6]{./figure/F.pdf}\end{center}
+\begin{center}\includegraphics[scale=0.5]{./figure/F.pdf}\end{center}
 $F$分布性质：
 \begin{enumerate}
 \item 若$F\sim F\left(n_1,n_2\right)$，则有
@@ -581,7 +582,7 @@ $F$分布性质：
 \item 设$F\sim F\left(n_1,n_2\right)$，对于给定的正数$\alpha\in\left(0,1\right)$，则满足
 \[P\left\{F>F_{\alpha}\left(n_1,n_2\right)\right\}=\alpha\]
 的点$x=F_{\alpha}\left(n_1,n_2\right)$称为$F$的上$\alpha$分位点
-\begin{center}\includegraphics[scale=0.6]{./figure/F_alpha.pdf}\end{center}
+\begin{center}\includegraphics[scale=0.5]{./figure/F_alpha.pdf}\end{center}
 \end{enumerate}
 \end{enumerate}
 
@@ -771,6 +772,22 @@ G\left(u\right)&=P\left(X+Y\leq u\right)\\
 例：将$n$个球（$1\sim n$号）随机放进$n$个盒子（$1\sim n$号）中去，一个盒子装一个球，将一个球装入与球同号的盒子中称为一个配对，记$X$为总的配对数，求$E\left(X\right)$\\
 解：记随机变量$X_i$为$i$号球的配对数，显然每个球的配对数只有$1$和$0$两种可能，而尽管随机变量$X_i$互相并不独立，但我们有$P\left(X_i=1\right)=\frac{1}{n}$，而又因为$X=\sum\limits_{i=1}^{n}X_i$，故我们有
 \[E\left(X\right)=\sum\limits_{i=1}^{n}E\left(X_i\right)=n\cdot\frac{1}{n}=1\]
+\end{enumerate}
+
+
+\section{样本及抽样分布}
+\begin{enumerate}
+\item 利用$\chi^2$分布的期望和方差易求的特性处理统计量期望或者方差的求解问题\\
+例：设$X_1,X_2,\cdots,X_n$是来自总体$X\sim N\left(\mu,\sigma^2\right)$的简单随机样本，样本均值为$\overline{X}=\dfrac{1}{n}\sum\limits_{i=1}^{n}X_i$，记$S_0^2=\dfrac{1}{n}\sum\limits_{i=1}^{n}\left(X_i-\mu\right)^2$，$S_1^2=\dfrac{1}{n}\sum\limits_{i=1}^{n}\left(X_i-\overline{X}\right)^2$，$S^2=\dfrac{1}{n-1}\sum\limits_{i=1}^{n}\left(X_i-\overline{X}\right)^2$，当样本量$n>2$时，求$D\left(S^2\right)$、$D\left(S_0^2\right)$、$D\left(S_1^2\right)$的大小顺序\\
+解：易知：
+\[\frac{n}{\sigma^2}S_0^2\sim\chi^2\left(n\right)\]
+\[\frac{n}{\sigma^2}S_1^2\sim\chi^2\left(n-1\right)\]
+\[\frac{n-1}{\sigma^2}S^2\sim\chi^2\left(n-1\right)\]
+故我们有：
+\[D\left(\frac{n}{\sigma^2}S_0^2\right)=2n\Rightarrow D\left(S_0^2\right)=\frac{2\sigma^4}{n}\]
+\[D\left(\frac{n}{\sigma^2}S_1^2\right)=2\left(n-1\right)\Rightarrow D\left(S_1^2\right)=\frac{2\sigma^4\left(n-1\right)}{n^2}\]
+\[D\left(\frac{n-1}{\sigma^2}S^2\right)=2\left(n-1\right)\Rightarrow D\left(S^2\right)=\frac{2\sigma^4}{n-1}\]
+因此，大小顺序为$D\left(S^2\right)>D\left(S_0^2\right)>D\left(S_1^2\right)$
 \end{enumerate}
 
 
